@@ -1,5 +1,11 @@
 require_relative '../config/environment'
+require_relative '../bin/command_line.rb'
 
 
 
-puts "HELLO WORLD"
+
+puts "Welcome! Ready to take your personality quiz?"
+command = Command.new
+command.current_user
+
+command.question_one
