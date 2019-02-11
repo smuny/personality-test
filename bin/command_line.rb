@@ -4,12 +4,9 @@ require_relative '../bin/apps/The_Forest.rb'
 
 class Command
 
-  def current_user
-    prompt = TTY::Prompt.new
-    name =  prompt.ask('What is your name?')
-      user = User.new
-      user.name = name
-      user.save
+  def player(name)
+    user = User.find_or_create_by(name:name)
+    user
   end
 
   def question_one
@@ -24,15 +21,12 @@ class Command
     end
   end
 
-  # def question_two
-  #   prompt = TTY::Prompt.new
-  #   prompt.select("You're in front of the door of a castle, how exactly do you imagine it?") do |menu|
-  #       menu.enum '.'
-  #
-  #       menu.choice 'It is a simpile door.', 1
-  #       menu.choice 'It is covered by plants and somewhat hard to find.', 2
-  #       menu.choice 'It is a huge wooden door.', 3
-  #   end
-  # end
+  def run
+    #similiar to blackjace run file
+    #the run file will call in current_user because current_user is only creating and finding a name. user will be able to input a name so that the user can later find their data through this method
+    prompt = TTY::Prompt.new
+    user_name = prompt.ask("What's your name?")
+    current_user = player(user_name)
+  end
 
 end

@@ -6,6 +6,6 @@ require_relative '../bin/command_line.rb'
 
 puts "Welcome! Ready to take your personality quiz?"
 command = Command.new
-command.current_user
-
-command.question_one
+# command.current_user
+# command.question_one
+command.run
