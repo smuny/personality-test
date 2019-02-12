@@ -229,5 +229,6 @@ class The_Forest
     question_six(user)
     question_seven(user)
     question_eight(user)
+    question_nine(user)
   end
 end

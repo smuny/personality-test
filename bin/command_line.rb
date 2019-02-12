@@ -45,8 +45,6 @@ class Command
 
   def run
     system 'clear'
-    #similiar to blackjace run file
-    #the run file will call in current_user because current_user is only creating and finding a name. user will be able to input a name so that the user can later find their data through this method
     prompt = TTY::Prompt.new
     user_name = prompt.ask("What's your name?")
     current_user = player(user_name)
