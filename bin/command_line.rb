@@ -50,7 +50,6 @@ class Command
     prompt = TTY::Prompt.new
     user_name = prompt.ask("What's your name?")
     current_user = player(user_name)
-    menu
     test_menu(current_user)
   end
 

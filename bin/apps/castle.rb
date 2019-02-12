@@ -33,6 +33,7 @@ class Castle
       menu.choice "A large banquet hall with huge chandeliers and red carpets"
       menu.choice "A long corridor with many closed doors"
     end
+   
 
     ans = Answer.create(content: answer)
     Response.create(user: user, answer: ans)
