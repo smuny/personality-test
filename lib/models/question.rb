@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  
-  has_many :answers
+  has_many :responses
+  has_many :users, through: :responses
 
 end

@@ -18,67 +18,76 @@ class The_Forest
   end
 
   def question_one(user)
-    puts "Picture yourself walking through a beautiful forest. The sun is out, there's a perfect breeze. It's just beautiful."
+    que = "Picture yourself walking through a beautiful forest. The sun is out, there's a perfect breeze. It's just beautiful."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("Who are you walking with?")
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_1 = Question.create(id: 1, desc: que)
+    Response.create(user: user, question: que_1, answers: answer)
   end
 
   def question_two(user)
-    puts "As you continue on in your walk through the forest, you come across an animal."
+    que = "As you continue on in your walk through the forest, you come across an animal."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What kind of animal is it?")
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_2 = Question.create(id: 2, desc: que)
+    Response.create(user: user, question: que_2, answers: answer)
+    
   end
 
   def question_three(user)
-    puts "You come up to the animal."
+    que = "You come up to the animal."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What does the animal do?")
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_3 = Question.create(id: 3,desc: que)
+    Response.create(user: user, question: que_3, answers: answer)
   end
 
   def question_four(user)
-    puts "You're walking deeper into the woods yet, and you come to a clearing. There's a house in the middle of the clearing."
+    que = "You're walking deeper into the woods yet, and you come to a clearing. There's a house in the middle of the clearing."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("How big is it? Is it fenced in or no?")
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_4 = Question.create(id: 4, desc: que)
+    Response.create(user: user, question: que_4, answers: answer)
   end
 
   def question_five(user)
-    puts "You walk up to the door of the home and it's open a bit. You enter and see a table."
+    que = "You walk up to the door of the home and it's open a bit. You enter and see a table."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("Describe what's on the table.")
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_5 = Question.create(id: 5, desc: que)
+    Response.create(user: user, question: que_5, answers: answer)
   end
 
   def question_six(user)
-    puts "You finish looking around the house and leave out the back door. There's a huge lawn and in the center is a garden. In the garden, you find a cup."
+    que = "You finish looking around the house and leave out the back door. There's a huge lawn and in the center is a garden. In the garden, you find a cup."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What is the cup made out of? What do you do with the cup?")
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_6 = Question.create(id: 6, desc: que)
+    Response.create(user: user, question: que_6, answers: answer)
   end
 
   def question_seven(user)
-    puts "As you walk to the end of the garden, you find yourself at a body of water."
+    que = "As you walk to the end of the garden, you find yourself at a body of water."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What kind of body of water is it? A lake? River? Pond?")
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_7 = Question.create(id: 7, desc: que)
+    Response.create(user: user, question: que_7, answers: answer)
   end
 
   def question_eight(user)
-    puts "You must cross this water in order to get home."
+    que = "You must cross this water in order to get home."
+    puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("How wet do you get?")   
-    ans = Answer.create(content: answer)
-    Response.create(user: user, answer: ans)
+    que_8 = Question.create(id: 8, desc: que)
+    Response.create(user: user, question: que_8, answers: answer)
   end
 
   def run(user)
