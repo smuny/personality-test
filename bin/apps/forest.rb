@@ -18,6 +18,7 @@ class The_Forest
   
     def question_one(user)
       puts "Picture yourself walking through a beautiful forest. The sun is out, there's a perfect breeze. It's just beautiful."
+      que_1 = "Who do you see walking with you?"
       prompt = TTY::Prompt.new
       quest = prompt.select("Who do you see walking with you?") do |menu|
           sleep 2
@@ -28,17 +29,17 @@ class The_Forest
       end
   
       if quest == 'Family member'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que_1, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Friend'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que_1 , answer_two: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Pet'
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que_1, answer_three: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_four: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que_1, answer_four: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
