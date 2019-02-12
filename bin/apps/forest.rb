@@ -22,7 +22,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("Who are you walking with?")
-    que_1 = Question.create(id: 1, desc: que)
+    que_1 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_1, answers: answer)
   end
 
@@ -31,7 +31,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What kind of animal is it?")
-    que_2 = Question.create(id: 2, desc: que)
+    que_2 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_2, answers: answer)
     
   end
@@ -41,7 +41,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What does the animal do?")
-    que_3 = Question.create(id: 3,desc: que)
+    que_3 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_3, answers: answer)
   end
 
@@ -50,7 +50,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("How big is it? Is it fenced in or no?")
-    que_4 = Question.create(id: 4, desc: que)
+    que_4 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_4, answers: answer)
   end
 
@@ -59,7 +59,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("Describe what's on the table.")
-    que_5 = Question.create(id: 5, desc: que)
+    que_5 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_5, answers: answer)
   end
 
@@ -68,7 +68,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What is the cup made out of? What do you do with the cup?")
-    que_6 = Question.create(id: 6, desc: que)
+    que_6 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_6, answers: answer)
   end
 
@@ -77,7 +77,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("What kind of body of water is it? A lake? River? Pond?")
-    que_7 = Question.create(id: 7, desc: que)
+    que_7 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_7, answers: answer)
   end
 
@@ -86,7 +86,7 @@ class The_Forest
     puts que
     prompt = TTY::Prompt.new
     answer = prompt.ask("How wet do you get?")   
-    que_8 = Question.create(id: 8, desc: que)
+    que_8 = Question.find_or_create_by(desc: que)
     Response.create(user: user, question: que_8, answers: answer)
   end
 
