@@ -13,10 +13,21 @@ question_forest_seven = Question.create(desc: "What is the cup made out of? What
 question_forest_eight = Question.create(desc: "What kind of body of water is it?", test: test_forest)
 question_forest_nine = Question.create(desc: "How wet do you get?", test: test_forest)
 
+question_oasis_one = Question.create(desc: "How big is the field?", test: test_oasis)
+question_oasis_two = Question.create(desc: "How big is the cube?", test: test_oasis)
+question_oasis_three = Question.create(desc: "What is the color of the cube?", test: test_oasis)
+question_oasis_four = Question.create(desc: "What is the texture of the cube?", test: test_oasis)
+question_oasis_five = Question.create(desc: "Is the ladder short or long? Near or Far from you?", test: test_oasis)
+question_oasis_six = Question.create(desc: "Is it near or far from the cube? Is it strong or weak?", test: test_oasis)
+question_oasis_seven = Question.create(desc: "What is the horse doing?", test: test_oasis)
+question_oasis_eight = Question.create(desc: "What color is the horse?", test: test_oasis)
+question_oasis_nine = Question.create(desc: "How many flowers do you see?", test: test_oasis)
+question_oasis_ten = Question.create(desc: "Is it raining, foggy, windy or sunny?", test: test_oasis)
+question_oasis_eleven = Question.create(desc: "Is it mild or strong? Is it in the background or right above the cube?", test: test_oasis)
+
 question_love_one = Question.create(desc: "Which one do you take to get your significant other's house?", test: test_love)
 question_love_two = Question.create(desc: "What are the combination of roses?", test: test_love)
 question_love_three = Question.create(desc: "Which do you do?", test: test_love)
 question_love_four = Question.create(desc: "Where do you leave them?", test: test_love)
 question_love_five = Question.create(desc: "When you arrive, are they", test: test_love)
 question_love_six = Question.create(desc: 'Which road do you take home?', test: test_love)
-

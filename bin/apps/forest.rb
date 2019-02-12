@@ -4,7 +4,7 @@ class The_Forest
   # There will be given multiple choices
   # User chooses a choice and the selected choice will be saved
   # The next question will be asked.
-  
+
   # At the end of all questions, the results of all the of choices will be presented along with the intepretation of them.
     def welcome
       system 'clear'
@@ -19,7 +19,7 @@ class The_Forest
     "
       fork{ exec 'killall afplay'}
     end
-  
+
     def question_one(user)
       pid = fork{ exec 'afplay', "sounds/nature_sounds.mp3" }
       puts "Picture yourself walking through a beautiful forest. The sun is out, there's a perfect breeze. It's just beautiful."
@@ -32,7 +32,7 @@ class The_Forest
         menu.choice 'No one'
       end
       fork{ exec 'killall afplay'}
-      
+
       if answer == 'Family member'
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 1, test: test)
@@ -45,13 +45,13 @@ class The_Forest
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 1, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
-      elsif 
+      elsif
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 1, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
     end
-  
+
     def question_two(user)
       pid = fork { exec 'afplay', 'sounds/walking_on_gravel.mp3'}
       puts "As you continue on in your walk through the forest, you come across an animal."
@@ -77,8 +77,9 @@ class The_Forest
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
     end
-  
+
     def question_three(user)
+      system "clear"
       puts "You come up to the animal."
       prompt = TTY::Prompt.new
       answer = prompt.select("What does the animal do?") do |menu|
@@ -101,8 +102,9 @@ class The_Forest
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
     end
-  
+
     def question_four(user)
+      system "clear"
       prompt = TTY::Prompt.new
       answer = prompt.select("What do you do?") do |menu|
         sleep 2
@@ -119,7 +121,7 @@ class The_Forest
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
     end
-  
+
     def question_five(user)
       pid = fork{ exec 'afplay', 'sounds/walking_on_gravel.mp3'}
       puts "You're walking deeper into the woods yet, and you come to a clearing. There's a house in the middle of the clearing."
@@ -150,9 +152,10 @@ class The_Forest
         question = Question.find_by(id: 5, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
+      question_six(user)
     end
-  
-  
+
+
     def question_six(user)
       pid = fork{ exec 'afplay', 'sounds/door.mp3'}
       puts "You walk up to the door of the home and it's open a bit. You enter and see a table."
@@ -163,6 +166,8 @@ class The_Forest
         menu.choice 'Food'
         menu.choice 'People'
         menu.choice 'Flowers'
+        menu.choice 'All of the above'
+        menu.choice 'None'
       end
 
       fork{ exec 'killall afplay'}
@@ -180,7 +185,7 @@ class The_Forest
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
     end
-  
+
     def question_seven(user)
       pid = fork{ exec 'afplay', 'sounds/door.mp3'}
       puts "You finish looking around the house and leave out the back door. There's a huge lawn and in the center is a garden. In the garden, you find a cup."
@@ -213,8 +218,9 @@ class The_Forest
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
     end
-  
+
     def question_eight(user)
+      system "clear"
       puts "As you walk to the end of the garden, you find yourself at a body of water."
       sleep(1)
       pid = fork{ exec 'afplay', 'sounds/nature_water.mp3'}
@@ -246,7 +252,7 @@ class The_Forest
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
     end
-  
+
     def question_nine(user)
       # killall 'afplay'
       pid = fork{ exec 'afplay' , 'sounds/crossing_bridge.mp3'}
@@ -277,29 +283,97 @@ class The_Forest
 
     def get_user_results(user)
       count = []
-      user.responses.each do |x|
-        count << x.answers
-      end
-      results = count.last(9)
-      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
-      puts "Question 1: Who do you see walking with you?"
-      sleep(2)
-      puts "Your answer was #{results[0]}"
-      sleep(2)
-      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
+      test = Test.find_by(id: 1)
+      test.responses.map do |x|
+        if x.user == user
+          x.answers
+        end
 
-    end 
-  
-    def run(user)
-      # question_one(user)
-      # question_two(user)
-      # question_three(user)
-      # question_four(user)
-      # question_five(user)
-      # question_six(user)
-      # question_seven(user)
-      # question_eight(user)
-      # question_nine(user)
-      get_user_results(user)
+      results = count.first(9)
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 1: Who do you see walking with you?"
+      sleep 2
+      puts "The answer you chose: #{results[0]}."
+      sleep 2
+      puts "Who you saw is currently the most important person in your life."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 2: What kind of animal is it?"
+      sleep 2
+      puts "The answer you chose: #{results[1]}."
+      sleep 2
+      puts "The size of the animal is the size of your current problems."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 3: What does the animal do?"
+      sleep 2
+      puts "The answer you chose: #{results[2]}."
+      sleep 2
+      puts "What the animal does is how you perceive the problem."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 4: What do YOU do?"
+      sleep 2
+      puts "The answer you chose: #{results[3]}."
+      sleep 2
+      puts "What you do determines how you handle the problem."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 5: What kind of house do you see and do you see a fence?"
+      sleep 2
+      puts "The answer you chose: #{results[4]}."
+      sleep 2
+      puts "The size of the house is the size of your ambitions. The fence represents how open or guarded you are with others."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 6: Describe what's on the table."
+      sleep 2
+      puts "The answer you chose: #{results[5]}."
+      sleep 2
+      puts "If what you saw on the table wasn't food, people, or flowers, it indicates some unhappiness."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 7: What is the cup made out of? What do you do with the cup?"
+      sleep 2
+      puts "The answer you chose: #{results[6]}."
+      sleep 2
+      puts "How durable the cup you found was is representative of how strong your relationship is with the person in the first part of the story. What you do with it is representative of your attitude toward them."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 8: What kind of body of water it is?"
+      sleep 2
+      puts "The answer you chose: #{results[7]}."
+      sleep 2
+      puts "The size of the body of water is related to the size of your sexual drive."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 9: How wet do you get?"
+      sleep 2
+      puts "The answer you chose: #{results[8]}."
+      sleep 2
+      puts "If you became very wet, it indicates that sex is important to you. If not very wet, it may mean it's less important."
     end
+
+    def run(user)
+       question_one(user)
+       question_two(user)
+       question_three(user)
+       question_four(user)
+       question_five(user)
+       question_six(user)
+       question_seven(user)
+       question_eight(user)
+       question_nine(user)
+       get_user_results(user)
+    end
+  end
 end
