@@ -1,4 +1,6 @@
-class The_Forest
+require 'pry'
+
+ class ForestTest
   system "clear"
   # There's going to be a given question
   # There will be given multiple choices
@@ -6,7 +8,7 @@ class The_Forest
   # The next question will be asked.
 
   # At the end of all questions, the results of all the of choices will be presented along with the intepretation of them.
-    def welcome
+    def welcome_forest(user)
       system "clear"
       puts "
         _______ .-. .-.,---.    ,---. .---.  ,---.    ,---.     .---.  _______
@@ -16,10 +18,13 @@ class The_Forest
          | |   | | |)||  `--.  | |  \ `-' / | |\ \   |  `--.( `-'  )    | |
          `-'   /(  (_)/( __.'  )\|   )---'  |_| \)\  /( __.' `----'     `-'
               (__)   (__)     (__)  (_)         (__)(__)                            "
+
+    question_one(user)
     end
 
     def question_one(user)
-      system "clear"
+      # system "clear"
+
       puts "Picture yourself walking through a beautiful forest. The sun is out, there's a perfect breeze. It's just beautiful."
       que_1 = "Who do you see walking with you?"
       prompt = TTY::Prompt.new
@@ -44,7 +49,8 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que_1, answer_four: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
-    end
+      question_two(user)
+    end 
 
     def question_two(user)
       system "clear"
@@ -67,6 +73,7 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      question_three(user)
     end
 
     def question_three(user)
@@ -90,6 +97,7 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      question_four(user)
     end
 
     def question_four(user)
@@ -108,6 +116,7 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      question_five(user)
     end
 
     def question_five(user)
@@ -135,6 +144,7 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      question_six(user)
     end
 
 
@@ -159,6 +169,7 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_three: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      question_seven(user)
     end
 
     def question_seven(user)
@@ -186,6 +197,7 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      question_eight(user)
     end
 
     def question_eight(user)
@@ -213,6 +225,7 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      question_nine(user)
     end
 
     def question_nine(user)
@@ -236,18 +249,26 @@ class The_Forest
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
+      # all_user_response(user)
     end
 
-    def run(user)
-      welcome
-      question_one(user)
-      question_two(user)
-      question_three(user)
-      question_four(user)
-      question_five(user)
-      question_six(user)
-      question_seven(user)
-      question_eight(user)
-      question_nine(user)
+    def all_user_response(user)
+      user.responses.each do |x|
+       puts x.answers
+      end
     end
-  end
+
+    def forest_run(user)
+      # welcome
+      # question_one(user)
+      # question_two(user)
+      # question_three(user)
+      # question_four(user)
+      # question_five(user)
+      # question_six(user)
+      # question_seven(user)
+      # question_eight(user)
+      # question_nine(user)
+      all_user_response(user)
+    end
+   end

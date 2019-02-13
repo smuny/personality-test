@@ -8,34 +8,57 @@ class Command
   def player(name)
     user = User.find_or_create_by(name:name)
     user
+    menu(user)
   end
 
-  def menu
+  def menu(user)
+    system "clear"
     prompt = TTY::Prompt.new
     prompt.select("Choose an option") do |menu|
-      menu.choice 'Take a test' do test_menu end
-      menu.choice 'See your previous tests'
+      menu.choice 'Take a test' do test_menu(user) end
+      menu.choice 'See your previous tests' # do previous_tests end
       menu.choice 'Delete your previous tests'
     end
+    # test_menu(user)
+    #if else statement needs to go in here for the options
   end
 #########################################################################################################
 #  Test Options                                                                                         #
 #########################################################################################################
 
-  def test_menu(user = nil)
+  def test_menu(user)
+    system "clear"
     prompt = TTY::Prompt.new
-    prompt.select("Which of the tests would you like to do?") do |menu|
-      menu.choice 'The Forest Test.' do forest(user) end
-      menu.choice 'The Castle Test' do castle(user) end
-      # menu.choice 'The Love Path' do end
-      # menu.choice 'The Oasis Test' do end
-      menu.choice 'Exit' do exit end
-    end
+    test_answer = prompt.select('Pick a test ninja', ["Forest", "Castle", "Exit"])
+    test_menu_method(user)
+    # test_question = prompt.select("Which of the tests would you like to do?") do |menu|
+    #   menu.choice 'The Forest Test.' # do forest(user) end
+    #   menu.choice 'The Castle Test' do castle(user) end
+    #   # menu.choice 'The Love Path' do end
+    #   # menu.choice 'The Oasis Test' do end
+    #   menu.choice 'Exit' do exit end
+    # end
   end
 
+  def test_menu_method(user)
+    welcome_forest(user)
+  end
+######################################
+  # def welcome_forest(user)
+  #   system "clear"
+  #   puts "
+  #     _______ .-. .-.,---.    ,---. .---.  ,---.    ,---.     .---.  _______
+  #   |__   __|| | | || .-'    | .-'/ .-. ) | .-.\   | .-'    ( .-._)|__   __|
+  #     )| |   | `-' || `-.    | `-.| | |(_)| `-'/   | `-.   (_) \     )| |
+  #    (_) |   | .-. || .-'    | .-'| | | | |   (    | .-'   _  \ \   (_) |
+  #      | |   | | |)||  `--.  | |  \ `-' / | |\ \   |  `--.( `-'  )    | |
+  #      `-'   /(  (_)/( __.'  )\|   )---'  |_| \)\  /( __.' `----'     `-'
+  #           (__)   (__)     (__)  (_)         (__)(__)                            "
+  # end
+########################################
+
   def forest(user)
-    forest = The_Forest.new
-    forest.run(user)
+    forest_run(user)
   end
 
   def castle(user)
@@ -44,16 +67,15 @@ class Command
   end
 
   def run
-    system 'clear'
     prompt = TTY::Prompt.new
     user_name = prompt.ask("What's your name?")
     current_user = player(user_name)
-    test_menu(current_user)
+    menu(current_user)
   end
 
-  def users_response(user)
-    
+  # def previous_tests
+  #
+  # end
 
-  end
 
 end
