@@ -226,17 +226,26 @@ class The_Forest
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
+
+    def get_user_results(user)
+      count = []
+      user.responses.each do |x|
+        count << x.answers
+      end
+      puts count.first(9)
+    end
   
     def run(user)
-      welcome
-      question_one(user)
-      question_two(user)
-      question_three(user)
-      question_four(user)
-      question_five(user)
-      question_six(user)
-      question_seven(user)
-      question_eight(user)
-      question_nine(user)
+      # welcome
+      # question_one(user)
+      # question_two(user)
+      # question_three(user)
+      # question_four(user)
+      # question_five(user)
+      # question_six(user)
+      # question_seven(user)
+      # question_eight(user)
+      # question_nine(user)
+      get_user_results(user)
     end
 end
