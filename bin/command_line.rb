@@ -51,4 +51,9 @@ class Command
     test_menu(current_user)
   end
 
+  def users_response(user)
+    
+
+  end
+
 end
