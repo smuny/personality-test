@@ -45,6 +45,7 @@ class The_Forest
   
     def question_two(user)
       puts "As you continue on in your walk through the forest, you come across an animal."
+      que = "What kind of animal is it?"
       prompt = TTY::Prompt.new
       quest = prompt.select("What kind of animal is it?") do |menu|
         sleep 2
@@ -53,19 +54,20 @@ class The_Forest
         menu.choice 'Small'
       end
       if quest == 'Big'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Medium'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_two: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
     def question_three(user)
       puts "You come up to the animal."
+      que = "What does the animal do?"
       prompt = TTY::Prompt.new
       quest = prompt.select("What does the animal do?") do |menu|
         sleep 2
@@ -74,35 +76,37 @@ class The_Forest
         menu.choice 'Threatens and chases you'
       end
       if quest == 'Stand still and stares at you'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc:que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Ignores you'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
     def question_four(user)
       prompt = TTY::Prompt.new
+      que = "What do you do?"
       quest = prompt.select("What do you do?") do |menu|
         sleep 2
         menu.choice 'Run away'
         menu.choice 'Engage with it'
       end
       if quest == 'Run away'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
     def question_five(user)
       puts "You're walking deeper into the woods yet, and you come to a clearing. There's a house in the middle of the clearing."
+      que = "What kind of house do you see and do you see a fence?"
       prompt = TTY::Prompt.new
       quest = prompt.select("What kind of house do you see and do you see a fence?") do |menu|
         sleep 4
@@ -112,44 +116,46 @@ class The_Forest
         menu.choice 'Small, no fence'
       end
       if quest == 'Big, fence'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Big, no fence'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Small, fence'
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_four: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
   
     def question_six(user)
       puts "You walk up to the door of the home and it's open a bit. You enter and see a table."
+      que = "Describe what's on the table."
       prompt = TTY::Prompt.new
-      quest = prompt.select(" Describe what's on the table.") do |menu|
+      quest = prompt.select("Describe what's on the table.") do |menu|
         sleep 2
         menu.choice 'Food'
         menu.choice 'People'
         menu.choice 'Flowers'
       end
       if quest == 'Food'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'People'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_two: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_three: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
     def question_seven(user)
       puts "You finish looking around the house and leave out the back door. There's a huge lawn and in the center is a garden. In the garden, you find a cup."
+      que = "What is the cup made out of? What do you do with the cup?"
       prompt = TTY::Prompt.new
       quest = prompt.select(" What is the cup made out of? What do you do with the cup?") do |menu|
         sleep 2
@@ -159,23 +165,24 @@ class The_Forest
         menu.choice 'Paper'
       end
       if quest == 'Metal'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Plastic'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Glass'
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_four: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
     def question_eight(user)
       puts "As you walk to the end of the garden, you find yourself at a body of water."
       prompt = TTY::Prompt.new
+      que = "What kind of body of water is it? A lake? River? Pond?"
       quest = prompt.select("What kind of body of water is it? A lake? River? Pond?") do |menu|
         sleep 2
         menu.choice 'Lake'
@@ -184,22 +191,23 @@ class The_Forest
         menu.choice 'Ocean'
       end
       if quest == 'Lake'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Pond'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Stream'
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_four: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
     def question_nine(user)
       puts "You must cross this water in order to get home."
+      que = "How wet do you get?"
       prompt = TTY::Prompt.new
       quest = prompt.select("How wet do you get?") do |menu|
         sleep 2
@@ -208,14 +216,14 @@ class The_Forest
         menu.choice 'Super soaked'
       end
       if quest == 'Not wet at all'
-        ques = Question.create(answer_one: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       elsif quest == 'Moderately wet'
-        ques = Question.create(answer_two: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       else
-        ques = Question.create(answer_three: quest)
-        Response.find_or_create_by(user: user, question: ques)
+        ques = Question.find_or_create_by(desc: que, answer_one: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
     end
   
