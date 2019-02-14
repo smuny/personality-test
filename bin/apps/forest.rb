@@ -1,13 +1,5 @@
 require 'pry'
 
- class ForestTest
-  system "clear"
-  # There's going to be a given question
-  # There will be given multiple choices
-  # User chooses a choice and the selected choice will be saved
-  # The next question will be asked.
-
-  # At the end of all questions, the results of all the of choices will be presented along with the intepretation of them.
     def welcome_forest(user)
       system "clear"
       puts "
@@ -50,7 +42,7 @@ require 'pry'
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
       question_two(user)
-    end 
+    end
 
     def question_two(user)
       system "clear"
@@ -158,6 +150,8 @@ require 'pry'
         menu.choice 'Food'
         menu.choice 'People'
         menu.choice 'Flowers'
+        menu.choice 'All of the above'
+        menu.choice 'None'
       end
       if quest == 'Food'
         ques = Question.find_or_create_by(desc: que, answer_one: quest)
@@ -165,8 +159,14 @@ require 'pry'
       elsif quest == 'People'
         ques = Question.find_or_create_by(desc: que, answer_two: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
-      else
+      elsif quest == 'Flowers'
         ques = Question.find_or_create_by(desc: que, answer_three: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
+      elsif quest == 'All of the above'
+        ques = Question.find_or_create_by(desc: que, answer_four: quest)
+        Response.find_or_create_by(user: user, question: ques, answers: quest)
+      else
+        ques = Question.find_or_create_by(desc: que, answer_five: quest)
         Response.find_or_create_by(user: user, question: ques, answers: quest)
       end
       question_seven(user)
@@ -252,23 +252,79 @@ require 'pry'
       # all_user_response(user)
     end
 
-    def all_user_response(user)
+    def get_user_results(user)
+      system "clear"
+      prompt = TTY::Prompt.new
+      count = []
       user.responses.each do |x|
-       puts x.answers
+        count << x.answers
       end
+      results = count.first(9)
+      puts "Question 1: Who do you see walking with you?"
+      sleep 2
+      puts "The answer you chose: #{results[0]}."
+      sleep 2
+      puts "Who you saw is currently the most important person in your life."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 2: What kind of animal is it?"
+      sleep 2
+      puts "The answer you chose: #{results[1]}."
+      sleep 2
+      puts "The size of the animal is the size of your current problems."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 3: What does the animal do?"
+      sleep 2
+      puts "The answer you chose: #{results[2]}."
+      sleep 2
+      puts "What the animal does is how you perceive the problem."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 4: What do YOU do?"
+      sleep 2
+      puts "The answer you chose: #{results[3]}."
+      sleep 2
+      puts "What you do determines how you handle the problem."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 5: What kind of house do you see and do you see a fence?"
+      sleep 2
+      puts "The answer you chose: #{results[4]}."
+      sleep 2
+      puts "The size of the house is the size of your ambitions. The fence represents how open or guarded you are with others."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 6: Describe what's on the table."
+      sleep 2
+      puts "The answer you chose: #{results[5]}."
+      sleep 2
+      puts "If what you saw on the table wasn't food, people, or flowers, it indicates some unhappiness."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 7: What is the cup made out of? What do you do with the cup?"
+      sleep 2
+      puts "The answer you chose: #{results[6]}."
+      sleep 2
+      puts "How durable the cup you found was is representative of how strong your relationship is with the person in the first part of the story. What you do with it is representative of your attitude toward them."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 8: What kind of body of water it is?"
+      sleep 2
+      puts "The answer you chose: #{results[7]}."
+      sleep 2
+      puts "The size of the body of water is related to the size of your sexual drive."
+        prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      puts "Question 9: How wet do you get?"
+      sleep 2
+      puts "The answer you chose: #{results[8]}."
+      sleep 2
+      puts "If you became very wet, it indicates that sex is important to you. If not very wet, it may mean it's less important."
     end
 
     def forest_run(user)
-      # welcome
-      # question_one(user)
-      # question_two(user)
-      # question_three(user)
-      # question_four(user)
-      # question_five(user)
-      # question_six(user)
-      # question_seven(user)
-      # question_eight(user)
-      # question_nine(user)
-      all_user_response(user)
+       welcome_forest(user)
+       question_one(user)
+      get_user_results(user)
     end
-   end
