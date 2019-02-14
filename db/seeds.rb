@@ -1,9 +1,22 @@
+test_forest = Test.create(name: "The Forest")
+test_castle = Test.create(name: "The Castle")
+test_oasis = Test.create(name: "The Oasis")
+test_love = Test.create(name: "The Love Path")
 
-question1 = Question.create
-question2 = Question.create
-question3 = Question.create
-question4 = Question.create
-question5 = Question.create
-question6 = Question.create
-question7 = Question.create
-question8 = Question.create
+question_forest_one = Question.create(desc: "Who do you see walking with you?", test: test_forest)
+question_forest_two = Question.create(desc: "What kind of animal is it?", test: test_forest)
+question_forest_three = Question.create(desc: "What does the animal do?", test: test_forest)
+question_forest_four = Question.create(desc: "What do you do?", test: test_forest)
+question_forest_five = Question.create(desc: "What kind of house do you see and do you see a fence?", test: test_forest)
+question_forest_six = Question.create(desc: "Describe what's on the table.", test: test_forest)
+question_forest_seven = Question.create(desc: "What is the cup made out of? What do you do with the cup?", test: test_forest)
+question_forest_eight = Question.create(desc: "What kind of body of water is it?", test: test_forest)
+question_forest_nine = Question.create(desc: "How wet do you get?", test: test_forest)
+
+question_love_one = Question.create(desc: "Which one do you take to get your significant other's house?", test: test_love)
+question_love_two = Question.create(desc: "What are the combination of roses?", test: test_love)
+question_love_three = Question.create(desc: "Which do you do?", test: test_love)
+question_love_four = Question.create(desc: "Where do you leave them?", test: test_love)
+question_love_five = Question.create(desc: "When you arrive, are they", test: test_love)
+question_love_six = Question.create(desc: 'Which road do you take home?', test: test_love)
+
