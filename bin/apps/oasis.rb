@@ -7,27 +7,27 @@
 
   def question_one(user)
   puts "Think of a field."
-  que_1 = "How big is the field?"
   prompt = TTY::Prompt.new
-  quest = prompt.select("How big is the field?") do |menu|
+  answer = prompt.select("How big is the field?") do |menu|
       sleep 2
     menu.choice 'Big'
     menu.choice 'Medium'
     menu.choice 'Small'
   end
 
-  if quest == 'Big'
-    ques = Question.find_or_create_by(desc: que_1)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Medium'
-    ques = Question.find_or_create_by(desc: que_1)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Small'
-    ques = Question.find_or_create_by(desc: que_1)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Big'
+      question = Question.find_by(id: 16, test_id: 3)
+      Test.find_by(id: 3).create(answers: answer)
+      Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Medium'
+    question = Question.find_by(id: 16, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Small'
+    question = Question.find_by(id: 16, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
-    ques = Question.find_or_create_by(desc: que_1)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+    question = Question.find_by(id: 16, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   end
   question_two(user)
 end
@@ -35,23 +35,26 @@ end
 def question_two(user)
   system "clear"
   puts "Think of a cube."
-  que = "How big is the cube?"
   prompt = TTY::Prompt.new
-  quest = prompt.select("How big is the cube?") do |menu|
+  answer = prompt.select("How big is the cube?") do |menu|
     sleep 2
     menu.choice 'Big'
     menu.choice 'Medium'
     menu.choice 'Small'
   end
-  if quest == 'Big'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Medium'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Big'
+      question = Question.find_by(id: 17, test_id: 3)
+      Test.find_by(id: 3).create(answers: answer)
+      Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Medium'
+    question = Question.find_by(id: 17, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Small'
+    question = Question.find_by(id: 17, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+    question = Question.find_by(id: 17, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   end
   question_three(user)
 end
@@ -59,9 +62,8 @@ end
 def question_three(user)
   system "clear"
   puts "Color of the cube."
-  que = "What is the color of the cube?"
   prompt = TTY::Prompt.new
-  quest = prompt.select("What is the color of the cube?") do |menu|
+  answer = prompt.select("What is the color of the cube?") do |menu|
     sleep 2
     menu.choice 'Red'
     menu.choice 'Yellow'
@@ -72,30 +74,30 @@ def question_three(user)
     menu.choice 'White'
     menu.choice 'Transparent'
   end
-  if quest == 'Red'
-    ques = Question.find_or_create_by(desc:que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Yellow'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Blue'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Violet'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Grey'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Black'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'White'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Transparent'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Red'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Yellow'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Blue'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Violet'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Grey'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Black'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'White'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Transparent'
+    question = Question.find_by(id: 18, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
     nil
   end
@@ -105,22 +107,21 @@ end
 def question_four(user)
   system "clear"
   prompt = TTY::Prompt.new
-  que = "What is the texture of the cube?"
-  quest = prompt.select("What is the texture of the cube?") do |menu|
+  answer = prompt.select("What is the texture of the cube?") do |menu|
     sleep 2
     menu.choice 'Smooth'
     menu.choice 'Rough'
     menu.choice 'Bumpy or Spiky'
   end
-  if quest == 'Smooth'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Rough'
-      ques = Question.find_or_create_by(desc: que)
-      Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Smooth'
+    question = Question.find_by(id: 19, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Rough'
+      question = Question.find_by(id: 19, test_id: 3)
+      Response.find_or_create_by(user: user, question: question)
   else
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+    question = Question.find_by(id: 19, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   end
   question_five(user)
 end
@@ -128,27 +129,26 @@ end
 def question_five(user)
   system "clear"
   puts "Imagine a Ladder."
-  que = "Is the ladder short or long? Near or Far from the cube?"
   prompt = TTY::Prompt.new
-  quest = prompt.select("Is the ladder short or long? Near or Far from you?") do |menu|
+  answer = prompt.select("Is the ladder short or long? Near or Far from you?") do |menu|
     sleep 4
     menu.choice 'Short, near'
     menu.choice 'Short, far'
     menu.choice 'Long, near'
     menu.choice 'Long, far'
   end
-  if quest == 'Short, near'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Short, far'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Long, near'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Short, near'
+    ques = Question.find_by(id: 20, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Short, far'
+    question = Question.find_by(id: 20, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Long, near'
+    question = Question.find_by(id: 20, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+    question = Question.find_by(id: 20, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   end
   question_six(user)
 end
@@ -157,27 +157,27 @@ end
 def question_six(user)
   system "clear"
   puts "Imagine the ladder and it's distance to the cube."
-  que = "Is it near or far from the cube? Is it strong or weak?"
+
   prompt = TTY::Prompt.new
-  quest = prompt.select("Is it near or far from the cube? Is it strong or weak?") do |menu|
+  answer = prompt.select("Is it near or far from the cube? Is it strong or weak?") do |menu|
     sleep 2
     menu.choice 'Near, Strong'
     menu.choice 'Near, Weak'
     menu.choice 'Far, Strong'
     menu.choice 'Far, Weak'
   end
-  if quest == 'Near, Strong'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Near, Weak'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Far, Strong'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Far, Weak'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Near, Strong'
+    question = Question.find_by(id: 21, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Near, Weak'
+    question = Question.find_by(id: 21, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Far, Strong'
+    question = Question.find_by(id: 21, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Far, Weak'
+    question = Question.find_by(id: 21, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
     nil
   end
@@ -187,23 +187,22 @@ end
 def question_seven(user)
   system "clear"
   puts "Imagine a horse."
-  que = "What is the horse doing?"
   prompt = TTY::Prompt.new
-  quest = prompt.select(" What is the horse doing?") do |menu|
+  answer = prompt.select(" What is the horse doing?") do |menu|
     sleep 2
     menu.choice 'Playing'
     menu.choice 'Running'
     menu.choice 'Sleeping or Grazing'
   end
-  if quest == 'Playing'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Running'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Sleeping or Grazing'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Playing'
+    quesion = Question.find_by(id: 22, test_id: 3)
+    Response.find_or_create_by(user: user, question: quesion)
+  elsif answer == 'Running'
+    quesion = Question.find_by(id: 22, test_id: 3)
+    Response.find_or_create_by(user: user, question: quesion)
+  elsif answer == 'Sleeping or Grazing'
+    quesion = Question.find_by(id: 22, test_id: 3)
+    Response.find_or_create_by(user: user, question: quesion)
   else
     nil
   end
@@ -214,22 +213,21 @@ def question_eight(user)
   system "clear"
   puts "Now imagine the horse's color."
   prompt = TTY::Prompt.new
-  que = "What color is the horse?"
-  quest = prompt.select("What color is the horse?") do |menu|
+  answer = prompt.select("What color is the horse?") do |menu|
     sleep 2
     menu.choice 'Brown'
     menu.choice 'Black'
     menu.choice 'White'
   end
-  if quest == 'Brown'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Black'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'White'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Brown'
+    question = Question.find_by(id: 23, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Black'
+    question = Question.find_by(id: 23, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'White'
+    question = Question.find_by(id: 23, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
     nil
   end
@@ -239,19 +237,18 @@ end
 def question_nine(user)
   system "clear"
   puts "Imagine flowers."
-  que = "How many flowers do you see?"
   prompt = TTY::Prompt.new
-  quest = prompt.select("How many flowers do you see?") do |menu|
+  answer = prompt.select("How many flowers do you see?") do |menu|
     sleep 2
     menu.choice 'Just a few'
     menu.choice 'They are everywhere!'
   end
-  if quest == 'Just a few'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'They are everywhere!'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Just a few'
+    question = Question.find_by(id: 23, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'They are everywhere!'
+    question = Question.find_by(id: 23, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
     nil
   end
@@ -261,27 +258,26 @@ end
 def question_ten(user)
   system "clear"
   puts "Imagine the weather."
-  que = "Is it raining, foggy, windy or sunny?"
   prompt = TTY::Prompt.new
-  quest = prompt.select("Is it raining, foggy, windy or sunny?") do |menu|
+  answer = prompt.select("Is it raining, foggy, windy or sunny?") do |menu|
     sleep 2
     menu.choice 'Rain'
     menu.choice 'Fog'
     menu.choice 'Windy'
     menu.choice 'Sunny'
   end
-  if quest == 'Rain'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Fog'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Windy'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Sunny'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Rain'
+    question = QQuestion.find_by(id: 24, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Fog'
+    question = Question.find_by(id: 24, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Windy'
+    question = Question.find_by(id: 24, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Sunny'
+    question = Question.find_by(id: 24, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
     nil
   end
@@ -291,27 +287,27 @@ end
 def question_eleven(user)
   system "clear"
   puts "Imagine a storm in relations to the cube."
-  que = "Is it mild or strong? Is it in the background or right above the cube?"
+
   prompt = TTY::Prompt.new
-  quest = prompt.select("Is it mild or strong? Is it in the background or right above the cube?") do |menu|
+  answer = prompt.select("Is it mild or strong? Is it in the background or right above the cube?") do |menu|
     sleep 2
     menu.choice 'Mild, in the background'
     menu.choice 'Mild, right above the cube'
     menu.choice 'Strong, in the background'
     menu.choice 'Strong, right above the cube'
   end
-  if quest == 'Mild, in the background'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Mild, right above the cube'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Strong, in the background'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
-  elsif quest == 'Strong, right above the cube'
-    ques = Question.find_or_create_by(desc: que)
-    Response.find_or_create_by(user: user, question: ques, answers: quest)
+  if answer == 'Mild, in the background'
+    question = Question.find_by(id: 25, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Mild, right above the cube'
+    question = Question.find_by(id: 25, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Strong, in the background'
+    question = Question.find_by(id: 25, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
+  elsif answer == 'Strong, right above the cube'
+    question = Question.find_by(id: 25, test_id: 3)
+    Response.find_or_create_by(user: user, question: question)
   else
     nil
   end
@@ -324,7 +320,8 @@ def get_user_results(user)
   user.responses.each do |x|
     count << x.answers
   end
-  results = count.first(9)
+  results = count.last(11)
+
   puts "Question 1: How big is the field?"
   sleep 2
   puts "The answer you chose: #{results[0]}."
@@ -352,6 +349,7 @@ def get_user_results(user)
   puts "Grey: You are self-confident, independent, and not easily rattled."
   puts "Black: You have a strong sense of individuality and independence, and you put a high value on alone time."
   puts "White: You are kind, independent, and self-reliant."
+  puts "Transparent: A cube with a transparent surface means you tend to let others know how you feel on the inside. You are confident enough to show your inner thoughts, and you are deeply sincere."
       prompt.keypress("Press space to continue", keys: [:space, :return])
   puts "========================================================================"
   puts "Question 4: What is the texture of the cube?"
@@ -359,23 +357,40 @@ def get_user_results(user)
   puts "The answer you chose: #{results[3]}."
   sleep 2
   puts "The texture of the cube represents your nature."
+  sleep 1
   puts "Smooth: You are a gentle person. You take the time to not hurt others or make them uncomfortable."
   puts "Rough: You are more straightforward. You try to be honest in everything that you do even if might affect the person you're talking to."
   puts "You tend to critize others and make others inferior to you."
     prompt.keypress("Press space to continue", keys: [:space, :return])
   puts "========================================================================"
-  puts "Question 5: What kind of house do you see and do you see a fence?"
+  puts "Question 5: Is the ladder short or long? Near or Far from you?"
   sleep 2
   puts "The answer you chose: #{results[4]}."
-  sleep 2
-  puts "The size of the house is the size of your ambitions. The fence represents how open or guarded you are with others."
+  sleep 1
+  puts "The ladder represents two different aspects of your life—your goals and your friendships."
+  sleep 1
+  puts "Short ladder: Your goals are realistic and simple."
+  sleep 1
+  puts "Long ladder: Your goals are more far fetched and difficult to attain."
+  sleep 1
+  puts "Ladder is near: You are putting maximum effort and focus into achieving your goals."
+  sleep 1
+  puts "Ladder is far: Your aren't putting much thought or effort into achieving your goals."
     prompt.keypress("Press space to continue", keys: [:space, :return])
   puts "========================================================================"
-  puts "Question 6: Describe what's on the table."
+  puts "Question 6: Is it near or far from the cube? Is it strong or weak?"
   sleep 2
   puts "The answer you chose: #{results[5]}."
-  sleep 2
-  puts "If what you saw on the table wasn't food, people, or flowers, it indicates some unhappiness."
+  sleep 1
+  puts " The location and material of your ladder can also tell you how close you are with your friends."
+  sleep 1
+  puts "Near: If your ladder is near the cube, you are very close with your friends. If it's actually leaning on the cube, it means your friends can lean on you for support."
+  sleep 1
+  puts "Far: You have a hard time opening up to people and letting them get close to you."
+  sleep 1
+  puts "Strong ladder: The stronger the material (e.g. stone, metal, etc.), the stronger the bond."
+  sleep 1
+  puts "Weak ladder: A weak ladder indicates a weak bond between you and those around you."
     prompt.keypress("Press space to continue", keys: [:space, :return])
   puts "========================================================================"
   puts "Question 7: What is the cup made out of? What do you do with the cup?"
@@ -385,18 +400,71 @@ def get_user_results(user)
   puts "How durable the cup you found was is representative of how strong your relationship is with the person in the first part of the story. What you do with it is representative of your attitude toward them."
     prompt.keypress("Press space to continue", keys: [:space, :return])
   puts "========================================================================"
-  puts "Question 8: What kind of body of water it is?"
+  puts "Question 8: What is the horse doing?"
   sleep 2
   puts "The answer you chose: #{results[7]}."
-  sleep 2
-  puts "The size of the body of water is related to the size of your sexual drive."
+  sleep 1
+  puts "The horse represents your ideal partner."
+  sleep 1
+  puts "Playing: Your ideal partner doesn't take life too seriously and or get bogged down by the little stuff."
+  sleep 1
+  puts "Running: Your ideal partner will respect your space and give you the alone time that you crave."
+  sleep 1
+  puts "Sleeping or Grazing: Your ideal partner is calm and fully committed to you."
     prompt.keypress("Press space to continue", keys: [:space, :return])
   puts "========================================================================"
-  puts "Question 9: How wet do you get?"
+  puts "Question 9: What color is the horse?"
   sleep 2
   puts "The answer you chose: #{results[8]}."
   sleep 2
-  puts "If you became very wet, it indicates that sex is important to you. If not very wet, it may mean it's less important."
+  puts "Brown: You prize comfort and reliability above all else. Otherwise, you don't have a specific set of expectations for your partner."
+  sleep 1
+  puts "Black: Your idea partner is dominant, seductive, and sophisticated."
+  sleep 1
+  puts "White: You value loyalty and trust more than anything else in a relationship."
+  prompt.keypress("Press space to continue", keys: [:space, :return])
+  puts "========================================================================"
+  puts "Question 9: How many flowers do you see?"
+  sleep 1
+  puts "The answer you chose: #{results[8]}."
+  sleep 1
+  puts "The flowers represent your family and friends. The number of flowers reflects your popularity, and their location indicates how close you are with your social groups."
+  sleep 1
+  puts "Just a few: You are close with your family and have a small, tight-knit group of friends."
+  sleep 1
+  puts " They're everywhere: You're a social butterfly! With family and friends too numerous to count, you'll never be lonely."
+  prompt.keypress("Press space to continue", keys: [:space, :return])
+  puts "========================================================================"
+  puts "Question 9: Is it raining, foggy, windy or sunny?"
+  sleep 1
+  puts "The answer you chose: #{results[8]}."
+  sleep 1
+  puts "The weather in your field reflects your general outlook on life."
+  sleep 1
+  puts "Rain: Rain symbolizes the problems in your life; the harder the rain, the bigger the problems."
+  sleep 1
+  puts "Fog: You feel uncertainty in life and may be struggling with your identity."
+  sleep 1
+  puts "Windy: Though you tend to worry about future issues, you generally don't let them get you down for long."
+  sleep 1
+  puts "Sunny: You are optimistic and carefree!"
+  prompt.keypress("Press space to continue", keys: [:space, :return])
+  puts "========================================================================"
+  puts "Question 9: Is it mild or strong? Is it in the background or right above the cube?"
+  sleep 2
+  puts "The answer you chose: #{results[8]}."
+  sleep 1
+  puts "The strength and position of the storm reflect the stress you're feeling in life."
+  sleep 1
+  puts "Mild (just passing through): While you aren't immune to stress, you know that all things must pass."
+  sleep 1
+  puts "Strong: When you stress, you go all in and have a very hard time pulling yourself out again."
+  sleep 1
+  puts "In the background: Any obstacles that might be causing you grief are not at the forefront of your mind. You are good at managing your anxiety."
+  sleep 1
+  puts "Right above the cube: You are deeply affected by stress and have a hard time seeing past it to get back to the bigger picture."
+  prompt.keypress("Press space to continue", keys: [:space, :return])
+  puts "========================================================================"
 end
 
 def oasis_run(user)
