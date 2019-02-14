@@ -7,8 +7,17 @@ class The_Forest
   
   # At the end of all questions, the results of all the of choices will be presented along with the intepretation of them.
     def welcome
-      puts "Hello"
-      
+      system 'clear'
+      puts " 
+      ▄▄▄▄▀ ▄  █ ▄███▄       ▄████  ████▄ █▄▄▄▄ ▄███▄     ▄▄▄▄▄      ▄▄▄▄▀ 
+   ▀▀▀ █   █   █ █▀   ▀      █▀   ▀ █   █ █  ▄▀ █▀   ▀   █     ▀▄ ▀▀▀ █    
+       █   ██▀▀█ ██▄▄        █▀▀    █   █ █▀▀▌  ██▄▄   ▄  ▀▀▀▀▄       █    
+      █    █   █ █▄   ▄▀     █      ▀████ █  █  █▄   ▄▀ ▀▄▄▄▄▀       █     
+     ▀        █  ▀███▀        █             █   ▀███▀               ▀      
+             ▀                 ▀           ▀                               
+                                                                           
+    "
+      fork{ exec 'killall afplay'}
     end
   
     def question_one(user)
@@ -174,12 +183,9 @@ class The_Forest
   
     def question_seven(user)
       pid = fork{ exec 'afplay', 'sounds/door.mp3'}
-      sleep (2)
-      fork{ exec 'killall afplay'}
       puts "You finish looking around the house and leave out the back door. There's a huge lawn and in the center is a garden. In the garden, you find a cup."
       prompt = TTY::Prompt.new
       pid = fork{ exec 'afplay', 'sounds/nature_sounds.mp3'}
-      sleep (2)
       answer = prompt.select(" What is the cup made out of? What do you do with the cup?") do |menu|
         sleep 2
         menu.choice 'Metal'
@@ -187,6 +193,7 @@ class The_Forest
         menu.choice 'Glass'
         menu.choice 'Paper'
       end
+      sleep (2)
       fork{ exec 'killall afplay'}
       if answer == 'Metal'
         test = Test.find_by(id: 1)
@@ -251,6 +258,7 @@ class The_Forest
         menu.choice 'Moderately wet'
         menu.choice 'Super soaked'
       end
+      sleep(1)
       fork{ exec 'killall afplay'}
       if answer == 'Not wet at all'
         test = Test.find_by(id: 1)
@@ -268,28 +276,30 @@ class The_Forest
     end
 
     def get_user_results(user)
-      # killall 'afplay'
       count = []
       user.responses.each do |x|
         count << x.answers
       end
       results = count.last(9)
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
       puts "Question 1: Who do you see walking with you?"
       sleep(2)
       puts "Your answer was #{results[0]}"
       sleep(2)
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
 
     end 
   
     def run(user)
-      question_one(user)
-      question_two(user)
-      question_three(user)
-      question_four(user)
-      question_five(user)
-      question_six(user)
-      question_seven(user)
-      question_eight(user)
-      question_nine(user)
+      # question_one(user)
+      # question_two(user)
+      # question_three(user)
+      # question_four(user)
+      # question_five(user)
+      # question_six(user)
+      # question_seven(user)
+      # question_eight(user)
+      # question_nine(user)
+      get_user_results(user)
     end
 end
