@@ -1,5 +1,7 @@
+require_all 'sounds'
 class Love
   def welcome
+    pid = fork{ exec 'afplay', "love_to_love_you.mp3" }
     puts " 
     _______________                        |*\_/*|________
     |  ___________  |     .-.     .-.      ||_/-\_|______  |
@@ -13,6 +15,7 @@ class Love
      / ********** \                          / ********** \
    /  ************  \                      /  ************  \
   --------------------                    --------------------"
+  killall afplay
   end
 
   def question_one(user)
