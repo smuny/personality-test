@@ -54,7 +54,7 @@ class Command
 
   def love(user)
     love = Love.new
-    # love.welcome
+    love.welcome
     love.run(user)
   end
 
