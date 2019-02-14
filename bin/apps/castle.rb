@@ -1,3 +1,4 @@
+require_all 'sounds'
 class Castle
   def welcome
     puts "
