@@ -1,6 +1,8 @@
+require_all 'sounds'
 class Love
   def welcome
-    puts " 
+    pid = fork{ exec 'afplay', "love_to_love_you.mp3" }
+    puts "
     _______________                        |*\_/*|________
     |  ___________  |     .-.     .-.      ||_/-\_|______  |
     | |           | |    .****. .****.     | |           | |
@@ -13,6 +15,7 @@ class Love
      / ********** \                          / ********** \
    /  ************  \                      /  ************  \
   --------------------                    --------------------"
+  killall afplay
   end
 
   def question_one(user)
@@ -25,14 +28,14 @@ class Love
 
     if answer == 'Short road'
       question = Question.find_by(id: 10, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
+      test = Test.find_by(id: 4).create(answers: answer)
       Response.find_or_create_by(user: user, question: question)
     elsif answer == 'Long road'
       question = Question.find_by(id: 10, test_id: 4)
       Test.find_by(id: 4).create(answers: answer)
       Response.find_or_create_by(user: user, question: question)
     end
-    
+
   end
 
   def question_two(user)

@@ -16,16 +16,19 @@
   end
 
   if answer == 'Big'
+      test = Test.find_by(id: 3)
       question = Question.find_by(id: 16, test_id: 3)
-      Test.find_by(id: 3).create(answers: answer)
       Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Medium'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 16, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Small'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 16, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 16, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   end
@@ -43,16 +46,19 @@ def question_two(user)
     menu.choice 'Small'
   end
   if answer == 'Big'
+      test = Test.find_by(id: 3)
       question = Question.find_by(id: 17, test_id: 3)
-      Test.find_by(id: 3).create(answers: answer)
       Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Medium'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 17, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Small'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 17, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 17, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   end
@@ -75,27 +81,35 @@ def question_three(user)
     menu.choice 'Transparent'
   end
   if answer == 'Red'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Yellow'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Blue'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Violet'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Grey'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Black'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'White'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Transparent'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 18, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
@@ -114,12 +128,15 @@ def question_four(user)
     menu.choice 'Bumpy or Spiky'
   end
   if answer == 'Smooth'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 19, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Rough'
+    test = Test.find_by(id: 3)
       question = Question.find_by(id: 19, test_id: 3)
       Response.find_or_create_by(user: user, question: question)
   else
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 19, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   end
@@ -131,22 +148,26 @@ def question_five(user)
   puts "Imagine a Ladder."
   prompt = TTY::Prompt.new
   answer = prompt.select("Is the ladder short or long? Near or Far from you?") do |menu|
-    sleep 4
+    sleep 2
     menu.choice 'Short, near'
     menu.choice 'Short, far'
     menu.choice 'Long, near'
     menu.choice 'Long, far'
   end
   if answer == 'Short, near'
-    ques = Question.find_by(id: 20, test_id: 3)
+    test = Test.find_by(id: 3)
+    question = Question.find_by(id: 20, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Short, far'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 20, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Long, near'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 20, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 20, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   end
@@ -167,15 +188,19 @@ def question_six(user)
     menu.choice 'Far, Weak'
   end
   if answer == 'Near, Strong'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 21, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Near, Weak'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 21, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Far, Strong'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 21, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Far, Weak'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 21, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
@@ -195,12 +220,15 @@ def question_seven(user)
     menu.choice 'Sleeping or Grazing'
   end
   if answer == 'Playing'
+    test = Test.find_by(id: 3)
     quesion = Question.find_by(id: 22, test_id: 3)
     Response.find_or_create_by(user: user, question: quesion)
   elsif answer == 'Running'
+    test = Test.find_by(id: 3)
     quesion = Question.find_by(id: 22, test_id: 3)
     Response.find_or_create_by(user: user, question: quesion)
   elsif answer == 'Sleeping or Grazing'
+    test = Test.find_by(id: 3)
     quesion = Question.find_by(id: 22, test_id: 3)
     Response.find_or_create_by(user: user, question: quesion)
   else
@@ -220,12 +248,15 @@ def question_eight(user)
     menu.choice 'White'
   end
   if answer == 'Brown'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 23, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Black'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 23, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'White'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 23, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
@@ -244,9 +275,11 @@ def question_nine(user)
     menu.choice 'They are everywhere!'
   end
   if answer == 'Just a few'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 23, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'They are everywhere!'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 23, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
@@ -267,15 +300,19 @@ def question_ten(user)
     menu.choice 'Sunny'
   end
   if answer == 'Rain'
-    question = QQuestion.find_by(id: 24, test_id: 3)
+    test = Test.find_by(id: 3)
+    question = Question.find_by(id: 24, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Fog'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 24, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Windy'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 24, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Sunny'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 24, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
@@ -297,15 +334,19 @@ def question_eleven(user)
     menu.choice 'Strong, right above the cube'
   end
   if answer == 'Mild, in the background'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 25, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Mild, right above the cube'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 25, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Strong, in the background'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 25, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   elsif answer == 'Strong, right above the cube'
+    test = Test.find_by(id: 3)
     question = Question.find_by(id: 25, test_id: 3)
     Response.find_or_create_by(user: user, question: question)
   else
@@ -323,12 +364,13 @@ def get_user_results(user)
   results = count.last(11)
 
   puts "Question 1: How big is the field?"
-  sleep 2
-  puts "The answer you chose: #{results[0]}."
-  sleep 2
+  sleep 1
+  puts "The answer you chose: #{question[0]}."
+  sleep 1
   puts "The field represents your mind. Its size is the representation of your knowledge of the world, and how vast your personality is. The condition of the field (dry, grassy, or well-trimmed) is what your personality looks like at first glance."
     prompt.keypress("Press space to continue", keys: [:space, :return])
   puts "========================================================================"
+  system "clear"
   puts "Question 2: How big is the cube?"
   sleep 2
   puts "The answer you chose: #{results[1]}."

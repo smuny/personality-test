@@ -1,3 +1,4 @@
+require_all 'sounds'
 class The_Forest
   # There's going to be a given question
   # There will be given multiple choices
@@ -15,20 +16,22 @@ class The_Forest
                 /  /    \/ /\     \    /    \ \  /    \/ /   /  \/  \/  \  /    \   \
               /  /      \/  \/\   \  /      \    /   /    \
            __/__/_______/___/__\___\__________________________________________________"
+      puts "Hello"
+      
     end
 
     def question_one(user)
-      # system "clear"
-
+      pid = fork{ exec 'afplay', "sounds/nature_sounds.mp3" }
       puts "Picture yourself walking through a beautiful forest. The sun is out, there's a perfect breeze. It's just beautiful."
       prompt = TTY::Prompt.new
       answer = prompt.select("Who do you see walking with you?") do |menu|
-          sleep 2
+        sleep 2
         menu.choice 'Family member'
         menu.choice 'Friend'
         menu.choice 'Pet'
         menu.choice 'No one'
       end
+      fork{ exec 'killall afplay'}
 
       if answer == 'Family member'
         test = Test.find_by(id: 1)
@@ -51,7 +54,7 @@ class The_Forest
     end
 
     def question_two(user)
-      system "clear"
+      pid = fork { exec 'afplay', 'sounds/walking_on_gravel.mp3'}
       puts "As you continue on in your walk through the forest, you come across an animal."
       prompt = TTY::Prompt.new
       answer = prompt.select("What kind of animal is it?") do |menu|
@@ -60,6 +63,7 @@ class The_Forest
         menu.choice 'Medium'
         menu.choice 'Small'
       end
+      fork{ exec 'killall afplay'}
       if answer == 'Big'
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 2, test: test)
@@ -123,9 +127,10 @@ class The_Forest
     end
 
     def question_five(user)
-      system "clear"
+      pid = fork{ exec 'afplay', 'sounds/walking_on_gravel.mp3'}
       puts "You're walking deeper into the woods yet, and you come to a clearing. There's a house in the middle of the clearing."
       prompt = TTY::Prompt.new
+      # killall 'afplay'
       answer = prompt.select("What kind of house do you see and do you see a fence?") do |menu|
         sleep 4
         menu.choice 'Big, fence'
@@ -133,6 +138,7 @@ class The_Forest
         menu.choice 'Small, fence'
         menu.choice 'Small, no fence'
       end
+      fork{ exec 'killall afplay'}
       if answer == 'Big, fence'
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 5, test: test)
@@ -155,9 +161,10 @@ class The_Forest
 
 
     def question_six(user)
-      system "clear"
+      pid = fork{ exec 'afplay', 'sounds/door.mp3'}
       puts "You walk up to the door of the home and it's open a bit. You enter and see a table."
       prompt = TTY::Prompt.new
+      # killall 'afplay'
       answer = prompt.select("Describe what's on the table.") do |menu|
         sleep 2
         menu.choice 'Food'
@@ -166,6 +173,8 @@ class The_Forest
         menu.choice 'All of the above'
         menu.choice 'None'
       end
+
+      fork{ exec 'killall afplay'}
       if answer == 'Food'
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 6, test: test)
@@ -183,9 +192,13 @@ class The_Forest
     end
 
     def question_seven(user)
-      system "clear"
+      pid = fork{ exec 'afplay', 'sounds/door.mp3'}
+      sleep (2)
+      fork{ exec 'killall afplay'}
       puts "You finish looking around the house and leave out the back door. There's a huge lawn and in the center is a garden. In the garden, you find a cup."
       prompt = TTY::Prompt.new
+      pid = fork{ exec 'afplay', 'sounds/nature_sounds.mp3'}
+      sleep (2)
       answer = prompt.select(" What is the cup made out of? What do you do with the cup?") do |menu|
         sleep 2
         menu.choice 'Metal'
@@ -193,6 +206,7 @@ class The_Forest
         menu.choice 'Glass'
         menu.choice 'Paper'
       end
+      fork{ exec 'killall afplay'}
       if answer == 'Metal'
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 7, test: test)
@@ -216,6 +230,8 @@ class The_Forest
     def question_eight(user)
       system "clear"
       puts "As you walk to the end of the garden, you find yourself at a body of water."
+      sleep(1)
+      pid = fork{ exec 'afplay', 'sounds/nature_water.mp3'}
       prompt = TTY::Prompt.new
       answer = prompt.select("What kind of body of water is it? A lake? River? Pond?") do |menu|
         sleep 2
@@ -224,6 +240,8 @@ class The_Forest
         menu.choice 'Stream'
         menu.choice 'Ocean'
       end
+
+      fork{ exec 'killall afplay'}
       if answer == 'Lake'
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 8, test: test)
@@ -245,7 +263,8 @@ class The_Forest
     end
 
     def question_nine(user)
-      system "clear"
+      # killall 'afplay'
+      pid = fork{ exec 'afplay' , 'sounds/crossing_bridge.mp3'}
       puts "You must cross this water in order to get home."
       prompt = TTY::Prompt.new
       answer = prompt.select("How wet do you get?") do |menu|
@@ -254,6 +273,7 @@ class The_Forest
         menu.choice 'Moderately wet'
         menu.choice 'Super soaked'
       end
+      fork{ exec 'killall afplay'}
       if answer == 'Not wet at all'
         test = Test.find_by(id: 1)
         question = Question.find_by(id: 9, test: test)
@@ -271,8 +291,7 @@ class The_Forest
     end
 
     def get_user_results(user)
-      system "clear"
-      prompt = TTY::Prompt.new
+      # killall 'afplay'
       count = []
       user.responses.each do |x|
         count << x.answers

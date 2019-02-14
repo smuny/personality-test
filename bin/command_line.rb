@@ -3,6 +3,8 @@ require_relative '../bin/apps/forest.rb'
 require_relative '../bin/apps/castle.rb'
 require_relative '../bin/apps/oasis.rb'
 require_relative '../bin/apps/love.rb'
+require_all 'sounds'
+
 class Command
 
   def player(name)
@@ -27,10 +29,14 @@ class Command
     system "clear"
     prompt = TTY::Prompt.new
     prompt.select("Which of the tests would you like to do?") do |menu|
-      menu.choice 'The Forest Test.' do forest(user) end
-      menu.choice 'The Castle Test' do castle(user) end
-      menu.choice 'The Love Path' do love(user) end
-      menu.choice 'The Oasis Test' do oasis(user) end
+      # menu.choice 'The Forest Test.' do forest(user) end
+      # menu.choice 'The Castle Test' do castle(user) end
+      # menu.choice 'The Love Path' do love(user) end
+      # menu.choice 'The Oasis Test' do oasis(user) end
+      menu.choice 'The Forest Test.'.colorize(:color => :green, :background => :black) do forest(user) end
+      menu.choice 'The Castle Test'.colorize(:color => :black, :background => :white) do castle(user) end
+      menu.choice 'The Love Path'.colorize(:color => :red, :background => :black) do love(user) end
+      menu.choice 'The Oasis Test'.colorize(:color => :light_blue, :background => :dark_blue) do oasis(user) end
       menu.choice 'Exit' do exit end
     end
   end
