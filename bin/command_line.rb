@@ -1,6 +1,7 @@
 require_relative '../config/environment.rb'
 require_relative '../bin/apps/forest.rb'
 require_relative '../bin/apps/castle.rb'
+require_relative '../bin/apps/love.rb'
 
 #WE need to seperare the answers to questions and tests. As of now in the console its creating a bunch of content answers. The user can determine its answers that was but i'd like it to be by question or by test. A user specifc question shows its answer.
 class Command
@@ -27,7 +28,7 @@ class Command
     prompt.select("Which of the tests would you like to do?") do |menu|
       menu.choice 'The Forest Test.' do forest(user) end
       menu.choice 'The Castle Test' do castle(user) end
-      # menu.choice 'The Love Path' do end
+      menu.choice 'The Love Path' do love(user) end
       # menu.choice 'The Oasis Test' do end
       menu.choice 'Exit' do exit end
     end
@@ -35,12 +36,19 @@ class Command
 
   def forest(user)
     forest = The_Forest.new
+    forest.welcome
     forest.run(user)
   end
 
   def castle(user)
     castle = Castle.new
     castle.run(user)
+  end
+
+  def love(user)
+    love = Love.new
+    # love.welcome
+    love.run(user)
   end
 
   def run
