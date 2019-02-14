@@ -25,6 +25,7 @@ class Command
 #########################################################################################################
 
   def test_menu(user = nil)
+    pid = fork{ exec 'afplay', 'sounds/mm_title.mp3'}
     prompt = TTY::Prompt.new
     prompt.select("Which of the tests would you like to do?") do |menu|
       menu.choice 'The Forest Test.'.colorize(:color => :green, :background => :black) do forest(user) end
