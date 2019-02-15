@@ -275,31 +275,100 @@ class The_Forest
       end
     end
 
-    def get_user_results(user)
-      count = []
-      user.responses.each do |x|
-        count << x.answers
+  def get_user_results(user)
+    count = []
+      test = Test.find_by(id: 1)
+      test.responses.each do |x|
+        if x.user == user
+          count << x.answers
+        end
       end
       results = count.last(9)
-      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 1: Who do you see walking with you?"
-      sleep(2)
-      puts "Your answer was #{results[0]}"
-      sleep(2)
-      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
-
-    end 
+      sleep 2
+      puts "The answer you chose: #{results[0]}."
+      sleep 2
+      puts "Who you saw is currently the most important person in your life."
+          # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 2: What kind of animal is it?"
+      sleep 2
+      puts "The answer you chose: #{results[1]}."
+      sleep 2
+      puts "The size of the animal is the size of your current problems."
+          # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 3: What does the animal do?"
+      sleep 2
+      puts "The answer you chose: #{results[2]}."
+      sleep 2
+      puts "What the animal does is how you perceive the problem."
+          # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 4: What do YOU do?"
+      sleep 2
+      puts "The answer you chose: #{results[3]}."
+      sleep 2
+      puts "What you do determines how you handle the problem."
+          # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 5: What kind of house do you see and do you see a fence?"
+      sleep 2
+      puts "The answer you chose: #{results[4]}."
+      sleep 2
+      puts "The size of the house is the size of your ambitions. The fence represents how open or guarded you are with others."
+          # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 6: Describe what's on the table."
+      sleep 2
+      puts "The answer you chose: #{results[5]}."
+      sleep 2
+      puts "If what you saw on the table wasn't food, people, or flowers, it indicates some unhappiness."
+          # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 7: What is the cup made out of? What do you do with the cup?"
+      sleep 2
+      puts "The answer you chose: #{results[6]}."
+      sleep 2
+      puts "How durable the cup you found was is representative of how strong your relationship is with the person in the first part of the story. What you do with it is representative of your attitude toward them."
+          # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 8: What kind of body of water it is?"
+      sleep 2
+      puts "The answer you chose: #{results[7]}."
+      sleep 2
+      puts "The size of the body of water is related to the size of your sexual drive."
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
+      puts "Question 9: How wet do you get?"
+      sleep 2
+      puts "The answer you chose: #{results[8]}."
+      sleep 2
+      puts "If you became very wet, it indicates that sex is important to you. If not very wet, it may mean it's less important."      
+  end
   
-    def run(user)
-      # question_one(user)
-      # question_two(user)
-      # question_three(user)
-      # question_four(user)
-      # question_five(user)
-      # question_six(user)
-      # question_seven(user)
-      # question_eight(user)
-      # question_nine(user)
-      get_user_results(user)
-    end
+  def run(user)
+    welcome
+    question_one(user)
+    question_two(user)
+    question_three(user)
+    question_four(user)
+    question_five(user)
+    question_six(user)
+    question_seven(user)
+    question_eight(user)
+    question_nine(user)
+    get_user_results(user)
+  end
+
 end

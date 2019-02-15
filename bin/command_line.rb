@@ -38,7 +38,6 @@ class Command
 
   def forest(user)
     forest = The_Forest.new
-    forest.welcome
     forest.run(user)
   end
 
@@ -49,8 +48,11 @@ class Command
 
   def love(user)
     love = Love.new
-    # love.welcome
     love.run(user)
+  end
+
+  def oasis(user)
+    
   end
 
   def run
