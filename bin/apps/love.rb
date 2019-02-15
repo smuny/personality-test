@@ -1,6 +1,10 @@
 require_all 'sounds'
 class Love
-  def welcome
+
+def initialize
+  @arr1 = []
+end
+  def welcome_love(user)
     pid = fork{ exec 'afplay', "sounds/love_to_love_you.mp3" }
     puts "
     _______________                        |*\_/*|________
@@ -15,9 +19,12 @@ class Love
     / ********** \                          / ********** \
     /  ************  \                      /  ************  \
     --------------------                    --------------------"
+
   end
 
+
   def question_one(user)
+
     fork{ exec 'killall afplay'}
     puts "You are walking to your boy/girlfriend's house. There are two roads to get there. One is a straight path to take you there quickly, but is very plain and boring. The other is significantly longer, but is full of wonderful sights and interesting things."
 
@@ -27,16 +34,20 @@ class Love
       menu.choice 'Long road'
     end
 
+    @arr1 = []
+
     if answer == 'Short road'
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 21, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     elsif answer == 'Long road'
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 21, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     end
-    binding.pry
+    question_two(user)
   end
 
   def question_two(user)
@@ -48,6 +59,7 @@ class Love
     test = Test.find_by(name: "The Love Path")
     question = Question.find_by(id: 22, test_id: 4)
     Response.find_or_create_by(user: user, question: question, answers:answer)
+    @arr1 << answer
   end
 
   def question_three(user)
@@ -62,12 +74,13 @@ class Love
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 23, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     elsif answer == 'Ask the maid to get them for you.'
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 23, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     end
-    binding.pry
   end
 
   def question_four(user)
@@ -82,12 +95,13 @@ class Love
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 24, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     elsif answer == 'Bed'
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 24, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     end
-    binding.pry
   end
 
   def question_five(user)
@@ -101,12 +115,13 @@ class Love
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 25, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     elsif answer == 'Asleep'
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 25, test:test)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     end
-    binding.pry
   end
 
   def question_six(user)
@@ -120,83 +135,77 @@ class Love
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 26, test_id: 4)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     elsif answer == 'Long road'
       test = Test.find_by(name: "The Love Path")
       question = Question.find_by(id: 26, test_id: 4)
       Response.find_or_create_by(user: user, question: question, answers:answer)
+      @arr1 << answer
     end
-    binding.pry
   end
 
   def get_user_results(user)
-    count = []
-    test = Test.find_by(id: 4)
-    test.responses.each do |x|
-      if x.user == user
-        count << x.answers
-      end
-    end
-    results = count.first(6)
-    binding.pry
+    system "clear"
+    @arr1.last(6)
 
+      system "clear"
     puts "======================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 1: Which one do you take to get your significant other's house?"
-    sleep 2
+    sleep 1
+    puts "The answer you chose: #{@arr1[0]}."
     puts "The road represents your attitude towards falling in love."
-    if results[0] == 'Short road'
-      puts "You chose short road, which means you fall in love quickly and easily."
-    else
-      puts "You chose long road, which means you take your time and do not fall in love easily."
-    end
+    puts "If you chose short road, it means you fall in love quickly and easily."
+    puts "If you chose long road, it means you take your time and do not fall in love easily."
+
     puts "========================================================"
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 2: What combination of roses did you choose?"
+    puts "You chose: #{@arr1[1]}"
     puts "The number of red represents how much you expect to give back in a relationship."
     puts "The number of white represents how much you expect to get back in a relationship."
-    puts "You chose #{results[1]} white, and #{results[1]}"
+
     puts "========================================================"
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 3: Who goes to get your significant other?"
+    puts "You chose: #{@arr1[2]}"
     puts "This question shows your attitude in handling relationship problems."
-    if results[2] == 'Go get them yourself'
-      puts "You chose to get them yourself, which means you are a pretty direct person, and have no issues confronting your significant other about a problem."
-    else
-      puts "You chose to let the maid get them, which means you may be a beat around the bush type of person."
-    end
+
     puts "========================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 4: Where do you place the roses?"
     puts "The placement of roses indicates how often you'd like to see your significant other."
-    if results[3] == 'Windowsill'
-      puts "You chose to place them on the windowsill, which means you don't expect or need to see your loved one too often."
-    else
-      puts "You chose to place them on the bed, which means you need lots of reassurance in the relationship."
-    end
+    puts "You chose: #{@arr1[3]}"
+    puts "If you chose to place them on the windowsill, it means you don't expect or need to see your loved one too often."
+    puts "If you chose to place them on the bed, it means you need lots of reassurance in the relationship."
+
     puts "=========================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 5: Are they awake or asleep?"
-    if results[4] == 'Awake'
-      puts "If you find them awake, you expect your love one to change for you."
-    else
-      puts "If you find them asleep, you accept them for the way they are."
-    end
+    puts "You chose: #{@arr1[4]}"
+    puts "If you find them awake, you expect your love one to change for you."
+    puts "If you find them asleep, you accept them for the way they are."
+
     puts "=========================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 6: Which road do you take back home?"
+    puts "You chose: #{@arr1[5]}"
     puts "This road shows how long you stay in love"
-    if results[5] == 'Short road'
-      puts "You chose the short road, which means you fall out of love quickly, and easily."
-    else
-      puts "You chose the long road, which means you tend to stay in love for a long time."
-    end
-    results = count
-    puts results
+    puts "You chose the short road, which means you fall out of love quickly, and easily."
+    puts "You chose the long road, which means you tend to stay in love for a long time."
+
+    run
   end
 
-  def run(user)
+  def love_run(user)
     welcome_love(user)
+    question_one(user)
+    question_two(user)
+    question_three(user)
+    question_four(user)
+    question_five(user)
+    question_six(user)
+
     get_user_results(user)
   end
-
 end

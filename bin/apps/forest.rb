@@ -4,9 +4,8 @@ require_all 'sounds'
   # There will be given multiple choices
   # User chooses a choice and the selected choice will be saved
   # The next question will be asked.
-
   # At the end of all questions, the results of all the of choices will be presented along with the intepretation of them.
-    def welcome
+    def welcome_forest(user)
       system 'clear'
       puts "
       ▄▄▄▄▀ ▄  █ ▄███▄       ▄████  ████▄ █▄▄▄▄ ▄███▄     ▄▄▄▄▄      ▄▄▄▄▀
@@ -364,15 +363,6 @@ require_all 'sounds'
     end
 
     def run(user)
-       question_one(user)
-       question_two(user)
-       question_three(user)
-       question_four(user)
-       question_five(user)
-       question_six(user)
-       question_seven(user)
-       question_eight(user)
-       question_nine(user)
+       welcome_forest(user)
        get_user_results(user)
     end
-end

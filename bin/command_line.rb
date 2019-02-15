@@ -52,9 +52,10 @@ require_all 'sounds'
   end
 
   def love(user)
-    love = Love.new
-    love.welcome
-    love.run(user)
+     love = Love.new
+    # love.welcome_love(user)
+    # love.run(user)
+    love.love_run(user)
   end
 
   def run
@@ -64,4 +65,3 @@ require_all 'sounds'
     current_user = player(user_name)
     menu(current_user)
   end
-end
