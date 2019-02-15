@@ -5,7 +5,7 @@ require_relative '../bin/apps/oasis.rb'
 require_relative '../bin/apps/love.rb'
 require_all 'sounds'
 
-class Command
+# class Command
 
   def player(name)
     user = User.find_or_create_by(name:name)
@@ -42,9 +42,8 @@ class Command
   end
 
   def forest(user)
-    forest = The_Forest.new
-    forest.welcome
-    forest.run(user)
+  # binding.pry
+    forest_run(user)
   end
 
   def castle(user)
@@ -58,17 +57,19 @@ class Command
 
   def love(user)
     love = Love.new
-    # love.welcome
+    love.welcome_love(user)
     love.run(user)
   end
 
   def run
+    system "clear"
     prompt = TTY::Prompt.new
     user_name = prompt.ask("What's your name?")
     current_user = player(user_name)
     menu(current_user)
   end
-end
+
+# end
   # def previous_tests
   #
   # end

@@ -1,6 +1,6 @@
 require_all 'sounds'
 class Love
-  def welcome
+  def welcome_love(user)
     pid = fork{ exec 'afplay', "love_to_love_you.mp3" }
     puts "
     _______________                        |*\_/*|________
@@ -15,11 +15,13 @@ class Love
      / ********** \                          / ********** \
    /  ************  \                      /  ************  \
   --------------------                    --------------------"
-  killall afplay
+  fork{ exec 'killall afplay'}
+    question_one(user)
   end
 
   def question_one(user)
     puts "You are walking to your boy/girlfriend's house. There are two roads to get there. One is a straight path to take you there quickly, but is very plain and boring. The other is significantly longer, but is full of wonderful sights and interesting things."
+
     prompt = TTY::Prompt.new
     answer = prompt.select("Which one do you take to get your significant other's house?") do |menu|
       menu.choice 'Short road'
@@ -27,13 +29,13 @@ class Love
     end
 
     if answer == 'Short road'
-      question = Question.find_by(id: 10, test_id: 4)
-      test = Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 21, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     elsif answer == 'Long road'
-      question = Question.find_by(id: 10, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 21, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     end
 
   end
@@ -44,9 +46,9 @@ class Love
     white = prompt.ask("What number of white do you pick?")
     red = prompt.ask("What number of red do you pick?")
     answer = [white, red]
-    question = Question.find_by(id: 11, test_id: 4)
-    Test.find_by(id: 4).create(answers: answer)
-    Response.find_or_create_by(user: user, question: question)
+    test = Test.find_by(name: "The Love Path")
+    question = Question.find_by(id: 22, test_id: 4)
+    Response.find_or_create_by(user: user, question: question, answers:answer)
   end
 
   def question_three(user)
@@ -58,13 +60,13 @@ class Love
     end
 
     if answer == 'Go get them yourself'
-      question = Question.find_by(id: 12, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 23, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     elsif answer == 'Ask the maid to get them for you.'
-      question = Question.find_by(id: 12, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 23, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     end
   end
 
@@ -77,13 +79,13 @@ class Love
     end
 
     if answer == 'Windowsill'
-      question = Question.find_by(id: 13, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 24, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     elsif answer == 'Bed'
-      question = Question.find_by(id: 13, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 24, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     end
   end
 
@@ -95,13 +97,13 @@ class Love
       menu.choice 'Asleep'
     end
     if answer == 'Awake'
-      question = Question.find_by(id: 14, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 25, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     elsif answer == 'Asleep'
-      question = Question.find_by(id: 14, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 25, test:test)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     end
   end
 
@@ -113,13 +115,13 @@ class Love
       menu.choice 'Long road'
     end
     if answer == 'Short road'
-      question = Question.find_by(id: 15, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 26, test_id: 4)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     elsif answer == 'Long road'
-      question = Question.find_by(id: 15, test_id: 4)
-      Test.find_by(id: 4).create(answers: answer)
-      Response.find_or_create_by(user: user, question: question)
+      test = Test.find_by(name: "The Love Path")
+      question = Question.find_by(id: 26, test_id: 4)
+      Response.find_or_create_by(user: user, question: question, answers:answer)
     end
   end
 
@@ -128,17 +130,12 @@ class Love
     user.responses.each do |x|
       count << x.answers
     end
-    results = count.last(6)
+    results = count
     puts results
   end
 
   def run(user)
-    # question_one(user)
-    # question_two(user)
-    # question_three(user)
-    # question_four(user)
-    # question_five(user)
-    # question_six(user)
+    welcome_love(user)
     get_user_results(user)
   end
 

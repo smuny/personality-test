@@ -1,12 +1,12 @@
 require_all 'sounds'
-class The_Forest
+# class The_Forest
   # There's going to be a given question
   # There will be given multiple choices
   # User chooses a choice and the selected choice will be saved
   # The next question will be asked.
 
   # At the end of all questions, the results of all the of choices will be presented along with the intepretation of them.
-    def welcome
+    def welcome_forest(user)
     puts  "              /\
                         /**\
                       /****\   /\
@@ -17,7 +17,7 @@ class The_Forest
               /  /      \/  \/\   \  /      \    /   /    \
            __/__/_______/___/__\___\__________________________________________________"
       puts "Hello"
-      
+      question_one(user)
     end
 
     def question_one(user)
@@ -34,19 +34,19 @@ class The_Forest
       fork{ exec 'killall afplay'}
 
       if answer == 'Family member'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 1, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Friend'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 1, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Pet'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 1, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 1, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -65,15 +65,15 @@ class The_Forest
       end
       fork{ exec 'killall afplay'}
       if answer == 'Big'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 2, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Medium'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 2, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 2, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -91,15 +91,15 @@ class The_Forest
         menu.choice 'Threatens and chases you'
       end
       if answer == 'Stand still and stares at you'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 3, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Ignores you'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 3, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 3, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -115,11 +115,11 @@ class The_Forest
         menu.choice 'Engage with it'
       end
       if answer == 'Run away'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 4, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 4, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -140,19 +140,19 @@ class The_Forest
       end
       fork{ exec 'killall afplay'}
       if answer == 'Big, fence'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 5, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Big, no fence'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 5, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Small, fence'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 5, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 5, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -176,15 +176,15 @@ class The_Forest
 
       fork{ exec 'killall afplay'}
       if answer == 'Food'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 6, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'People'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 6, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 6, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -208,19 +208,19 @@ class The_Forest
       end
       fork{ exec 'killall afplay'}
       if answer == 'Metal'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 7, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Plastic'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 7, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Glass'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 7, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 7, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -243,19 +243,19 @@ class The_Forest
 
       fork{ exec 'killall afplay'}
       if answer == 'Lake'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 8, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Pond'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 8, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Stream'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 8, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 8, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -275,15 +275,15 @@ class The_Forest
       end
       fork{ exec 'killall afplay'}
       if answer == 'Not wet at all'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 9, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == 'Moderately wet'
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 9, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id: 1)
+        test = Test.find_by(name: "The Forest")
         question = Question.find_by(id: 9, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
@@ -361,8 +361,7 @@ class The_Forest
     end
 
     def forest_run(user)
-       welcome_forest(user)
-       question_one(user)
+      welcome_forest(user)
       get_user_results(user)
     end
-  end
+  # end

@@ -1,5 +1,5 @@
 require_all 'sounds'
-class Castle
+# class Castle
   def welcome_castle
     puts "
 
@@ -23,16 +23,16 @@ class Castle
       end
 
       if answer == "It is a simple door"
-        test = Test.find_by(id:2)
-        question = Question.find_by(id: 1, test:test)
+        test = Test.find_by(name: "The Castle")
+        question = Question.find_by(id: 30, test:test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       elsif answer == "It is covered by plants and is somewhat hard to find"
-        test = Test.find_by(id:2)
-        question = Question.find_by(id: 1, test:test)
+        test = Test.find_by(name: "The Castle")
+        question = Question.find_by(id: 30, test:test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       else
-        test = Test.find_by(id:2)
-        question = Question.find_by(id: 1, test:test)
+        test = Test.find_by(name: "The Castle")
+        question = Question.find_by(id: 30, test:test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
       question_two(user)
@@ -49,20 +49,20 @@ class Castle
       menu.choice "A long corridor with many closed doors"
     end
     if answer == "A huge library, wall to wall full of books"
-      test = Test.find_by(id:2)
-      question = Question.find_by(id: 2, test:test)
+      test = Test.find_by(name: "The Castle")
+      question = Question.find_by(id: 31, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     elsif answer == "A huge fireplace and a hot fire burning"
-      test = Test.find_by(id:2)
-      question = Question.find_by(id: 2, test:test)
+      test = Test.find_by(name: "The Castle")
+      question = Question.find_by(id: 31, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     elsif answer == "A large banquet hall with huge chandeliers and red carpets"
-      test = Test.find_by(id:2)
-      question = Question.find_by(id: 2, test:test)
+      test = Test.find_by(name: "The Castle")
+      question = Question.find_by(id: 31, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     else
-      test = Test.find_by(id:2)
-      question = Question.find_by(id: 2, test:test)
+      test = Test.find_by(name: "The Castle")
+      question = Question.find_by(id: 31, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     end
     question_three(user)
@@ -75,17 +75,13 @@ class Castle
       menu.choice "It looks sharp and massive like not leading anywhere"
       menu.choice "It is an impressive spiral, grand staircase"
     end
-    if answer == "What does the staircase look like?"
-      test = Test.find_by(id:2)
-      question = Question.find_by(id: 3, test:test)
-      Response.find_or_create_by(user: user, question: question, answers: answer)
-    elsif answer == "It looks sharp and massive like not leading anywhere"
-      test = Test.find_by(id:2)
-      question = Question.find_by(id: 3, test:test)
+    if answer == "It looks sharp and massive like not leading anywhere"
+      test = Test.find_by(name: "The Castle")
+      question = Question.find_by(id: 32, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     else
-      test = Test.find_by(id:2)
-      question = Question.find_by(id: 3, test:test)
+      test = Test.find_by(name: "The Castle")
+      question = Question.find_by(id: 32, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     end
     question_four(user)
@@ -100,15 +96,15 @@ class Castle
       menu.choice "The window is huge, so that it takes almost the entire surface of the wall"
     end
     if answer == "It is a normal window"
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 4, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     elsif answer == "It’s too small, almost skylight"
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 4, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     else
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 4, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     end
@@ -125,19 +121,19 @@ class Castle
       menu.choice "A small, vibrant city"
     end
     if answer == "Large waves crashing furiously on rocks"
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 5, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     elsif answer == "A snowy forest"
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 5, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     elsif answer == "A green valley"
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 5, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     else
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 5, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     end
@@ -153,15 +149,15 @@ class Castle
       menu.choice "It’s a little jungle, but you can imagine how beautiful it would be if someone cleaned and put it in order"
     end
     if answer == "It is full of hypertrophic plants, grasses, broken wood and fallen barbed wire"
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 6, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     elsif answer == "It is impeccably maintained with countless colorful flowers"
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 6, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     else
-      test = Test.find_by(id:2)
+      test = Test.find_by(name: "The Castle")
       question = Question.find_by(id: 6, test:test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
     end
@@ -171,18 +167,35 @@ class Castle
     system "clear"
     prompt = TTY::Prompt.new
     count = []
-    test = Test.find_by(id:2)
+    test = Test.find_by(name: "The Castle")
     test.responses.each do |response|
      if response.user == user
       count << response.answers
      end
     end
-    results = count.last(11)
+    results = count
 
+    system "clear"
+    puts "Question 1: How exactly do you imagine it?"
+    puts "The answer you chose: #{results[0]}."
+    puts "The door represents your attitude to new experiences."
+    puts "If you have chosen the hidden door, you probably do not know what you need to do in the future and your life in it, and it looks blurry and undefined."
+    puts "If you have chosen a big, scary door, then you probably are afraid of the unknown and find it difficult to get out of your comfort zone and try new experiences."
+      prompt.keypress("Press space to continue", keys: [:space, :return])
+    puts "========================================================================"
+    system "clear"
+    puts "Question 2: What is the first thing you see?"
+    puts "The answer you chose: #{results[1]}."
+    puts "The space inside the castle is the idea that you believe others to have of you."
+    puts "The large fireplace gives a feeling of warmth and passion that you think you cause in people."
+    puts "A fancy ballroom suggests that you feel that you can dazzle people around you and that you have a lot to give."
+    puts "A long corridor with closed doors, you feel that you are difficult to understand and others will have to try much to ‘penetrate’ more within you"
+      prompt.keypress("Press space to continue", keys: [:space, :return])
+    puts "========================================================================"
   end
 
   def run(user)
     welcome_castle
     get_user_results(user)
   end
-end
+# end
