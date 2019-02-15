@@ -3,9 +3,10 @@ require_relative '../bin/apps/forest.rb'
 require_relative '../bin/apps/castle.rb'
 require_relative '../bin/apps/oasis.rb'
 require_relative '../bin/apps/love.rb'
+require_relative '../bin/apps/oasis.rb'
 require_all 'sounds'
 
-# class Command
+class Command
 
   def player(name)
     user = User.find_or_create_by(name:name)
@@ -18,7 +19,8 @@ require_all 'sounds'
     prompt.select("Choose an option") do |menu|
       menu.choice 'Take a test' do test_menu(user) end
       menu.choice 'See your results'
-      menu.choice 'Delete your previous tests'
+      menu.choice 'Delete your previous tests' do delete_test(user) end
+      menu.choice 'Delete your name' do delete_self(user) end
     end
   end
 #########################################################################################################
@@ -37,9 +39,21 @@ require_all 'sounds'
     end
   end
 
+  def delete_self(user)
+    user.delete
+      puts "User deleted"
+      run
+  end
+
+  def delete_test(user)
+    user.tests.delete
+    puts "NO MORE TESTS"
+    run
+  end
+
   def forest(user)
-  # binding.pry
-    forest_run(user)
+    forest = The_Forest.new
+    forest.run(user)
   end
 
   def castle(user)
@@ -47,21 +61,21 @@ require_all 'sounds'
     castle.run(user)
   end
 
-  def oasis(user)
-    oasis_run(user)
+  def love(user)
+    love = Love.new
+    love.welcome(user)
+    love.run(user)
   end
 
-  def love(user)
-     love = Love.new
-    # love.welcome_love(user)
-    # love.run(user)
-    love.love_run(user)
+  def oasis(user)
+    oasis = Oasis.new
+    oasis.run(user)
   end
 
   def run
-    system "clear"
     prompt = TTY::Prompt.new
     user_name = prompt.ask("What's your name?")
     current_user = player(user_name)
     menu(current_user)
   end
+end
