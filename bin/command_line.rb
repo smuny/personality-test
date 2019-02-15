@@ -3,6 +3,7 @@ require_relative '../bin/apps/forest.rb'
 require_relative '../bin/apps/castle.rb'
 require_relative '../bin/apps/oasis.rb'
 require_relative '../bin/apps/love.rb'
+require_relative '../bin/apps/oasis.rb'
 require_all 'sounds'
 
 class Command
@@ -39,7 +40,6 @@ class Command
 
   def forest(user)
     forest = The_Forest.new
-    forest.welcome
     forest.run(user)
   end
 
@@ -54,8 +54,16 @@ class Command
 
   def love(user)
     love = Love.new
+<<<<<<< HEAD
     love.welcome
+=======
+>>>>>>> cristianlava
     love.run(user)
+  end
+
+  def oasis(user)
+    oasis = Oasis.new
+    oasis.run(user)
   end
 
   def run
