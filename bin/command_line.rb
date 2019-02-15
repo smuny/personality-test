@@ -25,14 +25,10 @@ require_all 'sounds'
 #  Test Options                                                                                         #
 #########################################################################################################
 
-  def test_menu(user)
-    system "clear"
+  def test_menu(user = nil)
+    pid = fork{ exec 'afplay', 'sounds/mm_title.mp3'}
     prompt = TTY::Prompt.new
     prompt.select("Which of the tests would you like to do?") do |menu|
-      # menu.choice 'The Forest Test.' do forest(user) end
-      # menu.choice 'The Castle Test' do castle(user) end
-      # menu.choice 'The Love Path' do love(user) end
-      # menu.choice 'The Oasis Test' do oasis(user) end
       menu.choice 'The Forest Test.'.colorize(:color => :green, :background => :black) do forest(user) end
       menu.choice 'The Castle Test'.colorize(:color => :black, :background => :white) do castle(user) end
       menu.choice 'The Love Path'.colorize(:color => :red, :background => :black) do love(user) end
@@ -57,7 +53,7 @@ require_all 'sounds'
 
   def love(user)
     love = Love.new
-    love.welcome_love(user)
+    love.welcome
     love.run(user)
   end
 
@@ -68,8 +64,4 @@ require_all 'sounds'
     current_user = player(user_name)
     menu(current_user)
   end
-
-# end
-  # def previous_tests
-  #
-  # end
+end

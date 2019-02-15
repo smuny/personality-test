@@ -6,18 +6,18 @@ require_all 'sounds'
   # The next question will be asked.
 
   # At the end of all questions, the results of all the of choices will be presented along with the intepretation of them.
-    def welcome_forest(user)
-    puts  "              /\
-                        /**\
-                      /****\   /\
-                    /      \ /**\
-                   /  /\    /    \        /\    /\  /\      /\            /\/\/\  /\
-                  /  /  \  /      \      /  \/\/  \/  \  /\/  \/\  /\  /\/ / /  \/  \
-                /  /    \/ /\     \    /    \ \  /    \/ /   /  \/  \/  \  /    \   \
-              /  /      \/  \/\   \  /      \    /   /    \
-           __/__/_______/___/__\___\__________________________________________________"
-      puts "Hello"
-      question_one(user)
+    def welcome
+      system 'clear'
+      puts "
+      ▄▄▄▄▀ ▄  █ ▄███▄       ▄████  ████▄ █▄▄▄▄ ▄███▄     ▄▄▄▄▄      ▄▄▄▄▀
+   ▀▀▀ █   █   █ █▀   ▀      █▀   ▀ █   █ █  ▄▀ █▀   ▀   █     ▀▄ ▀▀▀ █
+       █   ██▀▀█ ██▄▄        █▀▀    █   █ █▀▀▌  ██▄▄   ▄  ▀▀▀▀▄       █
+      █    █   █ █▄   ▄▀     █      ▀████ █  █  █▄   ▄▀ ▀▄▄▄▄▀       █
+     ▀        █  ▀███▀        █             █   ▀███▀               ▀
+             ▀                 ▀           ▀
+
+    "
+      fork{ exec 'killall afplay'}
     end
 
     def question_one(user)
@@ -50,7 +50,6 @@ require_all 'sounds'
         question = Question.find_by(id: 1, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      question_two(user)
     end
 
     def question_two(user)
@@ -77,7 +76,6 @@ require_all 'sounds'
         question = Question.find_by(id: 2, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      question_three(user)
     end
 
     def question_three(user)
@@ -103,7 +101,6 @@ require_all 'sounds'
         question = Question.find_by(id: 3, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      question_four(user)
     end
 
     def question_four(user)
@@ -123,7 +120,6 @@ require_all 'sounds'
         question = Question.find_by(id: 4, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      question_five(user)
     end
 
     def question_five(user)
@@ -188,17 +184,13 @@ require_all 'sounds'
         question = Question.find_by(id: 6, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      question_seven(user)
     end
 
     def question_seven(user)
       pid = fork{ exec 'afplay', 'sounds/door.mp3'}
-      sleep (2)
-      fork{ exec 'killall afplay'}
       puts "You finish looking around the house and leave out the back door. There's a huge lawn and in the center is a garden. In the garden, you find a cup."
       prompt = TTY::Prompt.new
       pid = fork{ exec 'afplay', 'sounds/nature_sounds.mp3'}
-      sleep (2)
       answer = prompt.select(" What is the cup made out of? What do you do with the cup?") do |menu|
         sleep 2
         menu.choice 'Metal'
@@ -206,6 +198,7 @@ require_all 'sounds'
         menu.choice 'Glass'
         menu.choice 'Paper'
       end
+      sleep (2)
       fork{ exec 'killall afplay'}
       if answer == 'Metal'
         test = Test.find_by(name: "The Forest")
@@ -224,7 +217,6 @@ require_all 'sounds'
         question = Question.find_by(id: 7, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      question_eight(user)
     end
 
     def question_eight(user)
@@ -259,7 +251,6 @@ require_all 'sounds'
         question = Question.find_by(id: 8, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      question_nine(user)
     end
 
     def question_nine(user)
@@ -273,6 +264,7 @@ require_all 'sounds'
         menu.choice 'Moderately wet'
         menu.choice 'Super soaked'
       end
+      sleep(1)
       fork{ exec 'killall afplay'}
       if answer == 'Not wet at all'
         test = Test.find_by(name: "The Forest")
@@ -287,72 +279,83 @@ require_all 'sounds'
         question = Question.find_by(id: 9, test: test)
         Response.find_or_create_by(user: user, question: question, answers: answer)
       end
-      # all_user_response(user)
     end
 
     def get_user_results(user)
-      # killall 'afplay'
       count = []
-      user.responses.each do |x|
-        count << x.answers
+      test = Test.find_by(id: 1)
+      test.responses.each do |x|
+        if x.user == user
+          count << x.answers
+        end
       end
-      results = count.first(9)
+      results = count.last(9)
+      puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 1: Who do you see walking with you?"
       sleep 2
       puts "The answer you chose: #{results[0]}."
       sleep 2
       puts "Who you saw is currently the most important person in your life."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 2: What kind of animal is it?"
       sleep 2
       puts "The answer you chose: #{results[1]}."
       sleep 2
       puts "The size of the animal is the size of your current problems."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 3: What does the animal do?"
       sleep 2
       puts "The answer you chose: #{results[2]}."
       sleep 2
       puts "What the animal does is how you perceive the problem."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 4: What do YOU do?"
       sleep 2
       puts "The answer you chose: #{results[3]}."
       sleep 2
       puts "What you do determines how you handle the problem."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 5: What kind of house do you see and do you see a fence?"
       sleep 2
       puts "The answer you chose: #{results[4]}."
       sleep 2
       puts "The size of the house is the size of your ambitions. The fence represents how open or guarded you are with others."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 6: Describe what's on the table."
       sleep 2
       puts "The answer you chose: #{results[5]}."
       sleep 2
       puts "If what you saw on the table wasn't food, people, or flowers, it indicates some unhappiness."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 7: What is the cup made out of? What do you do with the cup?"
       sleep 2
       puts "The answer you chose: #{results[6]}."
       sleep 2
       puts "How durable the cup you found was is representative of how strong your relationship is with the person in the first part of the story. What you do with it is representative of your attitude toward them."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 8: What kind of body of water it is?"
       sleep 2
       puts "The answer you chose: #{results[7]}."
       sleep 2
       puts "The size of the body of water is related to the size of your sexual drive."
-        prompt.keypress("Press space to continue", keys: [:space, :return])
+        # prompt.keypress("Press space to continue", keys: [:space, :return])
       puts "========================================================================"
+      pid = fork{ exec 'afplay', 'sounds/typewriter.mp3' }
       puts "Question 9: How wet do you get?"
       sleep 2
       puts "The answer you chose: #{results[8]}."
@@ -360,8 +363,16 @@ require_all 'sounds'
       puts "If you became very wet, it indicates that sex is important to you. If not very wet, it may mean it's less important."
     end
 
-    def forest_run(user)
-      welcome_forest(user)
-      get_user_results(user)
+    def run(user)
+       question_one(user)
+       question_two(user)
+       question_three(user)
+       question_four(user)
+       question_five(user)
+       question_six(user)
+       question_seven(user)
+       question_eight(user)
+       question_nine(user)
+       get_user_results(user)
     end
-  # end
+end
