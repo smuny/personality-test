@@ -1,6 +1,8 @@
 require_all 'sounds'
 class Castle
-
+  def initialize
+    @all = []
+  end
   def welcome
     fork{ exec 'killall afplay'}
     puts "
@@ -16,6 +18,7 @@ class Castle
   end
 
   def question_one(user)
+    system "clear"
     prompt = TTY::Prompt.new
     answer = prompt.select("You are in front of the door of the castle. How exactly do you imagine it?") do |menu|
       menu.choice "It is a simple door"
@@ -26,14 +29,17 @@ class Castle
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 10, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "It is covered by plants, and is somewhat hard to find"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 10, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "It is a huge wooden door with metal details, and it looks a little frightening"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 10, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     else
       puts "Answer not found"
     end
@@ -41,6 +47,7 @@ class Castle
   
 
   def question_two(user)
+    system "clear"
     prompt = TTY::Prompt.new
     answer = prompt.select("You pass the door of the castle and realize that there is no soul. It is desert. What is the first thing you see?") do |menu|
       menu.choice "A huge library, wall to wall full of books"
@@ -52,24 +59,29 @@ class Castle
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 11, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "A huge fireplace and a hot fire burning" 
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 11, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "A large banquet hall with huge chandeliers and red carpets"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 11, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "A long corridor with many closed doors"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 11, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     else
       puts "Not an answer"
     end
   end
 
   def question_three(user)
+    system "clear"
     prompt = TTY::Prompt.new
     answer = prompt.select("You look around and find a staircase. You decide to climb the stairs. What does the staircase look like?") do |menu|
       menu.choice "It looks sharp and massive like not leading anywhere"
@@ -79,16 +91,19 @@ class Castle
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 12, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "It is an impressive spiral, grand staircase"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 12, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     else
       puts "Not an answer"
     end
   end
   
   def question_four(user)
+    system "clear"
     prompt = TTY::Prompt.new
     answer = prompt.select("After you climb the stairs, you reach a small room in which there is only one window. How big is it?") do |menu|
       menu.choice "It is a normal window"
@@ -99,20 +114,24 @@ class Castle
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 13, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "It's too small, almost skylight"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 13, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "The window is huge, so that it takes almost the entire surface of the wall"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 13, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     else
       puts "Not an answer"
     end
   end
   
   def question_five(user)
+    system "clear"
     prompt = TTY::Prompt.new
     answer = prompt.select("You look out the window. What do you see?") do |menu|
       menu.choice "Large waves crashing furiously on rocks"
@@ -124,24 +143,29 @@ class Castle
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 14, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "A snowy forest"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 14, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "A green valley"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 14, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "A small, vibrant city"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 14, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     else
       puts "Not an answer"
     end
   end
   
   def question_six(user)
+    system "clear"
     prompt = TTY::Prompt.new
     answer = prompt.select("You go down the stairs and you’re back in the area where you were when you first entered the castle. You go ahead and find a door at the rear of the building. You open it and go out in a yard. What exactly does it look like?") do |menu|
       menu.choice "It is full of hypertrophic plants, grasses, broken wood and fallen barbed wire"
@@ -152,30 +176,28 @@ class Castle
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 15, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer) 
+      @all << answer
     elsif answer == "It is impeccably maintained with countless colorful flowers"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 15, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     elsif answer == "It’s a little jungle, but you can imagine how beautiful it would be if someone cleaned and put it in order"
       test = Test.find_by(id: 2)
       question = Question.find_by(id: 15, test: test)
       Response.find_or_create_by(user: user, question: question, answers: answer)
+      @all << answer
     else
       puts "Not an answer"
     end
   end
 
   def get_results(user)
-    count = []
-    test = Test.find_by(id: 2)
-    test.responses.each do |x|
-      binding.pry
-      if x.user == user
-        count << x.answers
-      end
-    end 
-    binding.pry
-    puts "================================================================="
+    prompt = TTY::Prompt.new
+    system "clear"
+    results = @all
+    results.last(6)
+    
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 1: How exactly did you imagine the castle?"
     puts "The door represents your attitude to a new experience."
@@ -189,7 +211,7 @@ class Castle
     else
       puts "Yikes it broke again!!"
     end
-    sleep(1)
+    prompt.keypress("Press space to continue", keys: [:space, :return])
     puts "=================================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 2: You pass the door of the castle and realize that there is no soul. It is desert. What is the first thing you see?"
@@ -205,7 +227,7 @@ class Castle
     else
       puts "Yikes it broke again"
     end
-    sleep(1)
+    prompt.keypress("Press space to continue", keys: [:space, :return])
     puts "===================================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 3: What does the staircase you climb look like?"
@@ -217,7 +239,7 @@ class Castle
     else
       puts "Yikes it broke again"
     end
-    sleep(1)
+    prompt.keypress("Press space to continue", keys: [:space, :return])
     puts "======================================================================"
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 4: How big is the window?"
@@ -231,7 +253,7 @@ class Castle
     else
       puts "Yikes it broke again"
     end
-    sleep(1)
+    prompt.keypress("Press space to continue", keys: [:space, :return])
     puts "======================================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 5: What do you see outside the window?"
@@ -247,7 +269,7 @@ class Castle
     else
       puts "Yikes it broke again"
     end
-    sleep(1)
+    prompt.keypress("Press space to continue", keys: [:space, :return])
     puts "======================================================================="
     pid = fork{ exec 'afplay', 'sounds/typewriter.mp3'}
     puts "Question 6: What does the courtyard look like?"
@@ -273,5 +295,6 @@ class Castle
     question_five(user)
     question_six(user)
     get_results(user)
+    command.run
   end
 end
