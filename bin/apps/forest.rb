@@ -396,9 +396,12 @@ class The_Forest
       sleep 2
       puts "If you became very wet, it indicates that sex is important to you. If not very wet, it may mean it's less important."      
   end
+  def go_back_to_menu
+    command = Command.new
+    command.run
+  end
   
   def run(user)
-    welcome
     question_one(user)
     question_two(user)
     question_three(user)
@@ -409,7 +412,7 @@ class The_Forest
     question_eight(user)
     question_nine(user)
     get_user_results(user)
-    command.run
+    go_back_to_menu
   end
 
 end

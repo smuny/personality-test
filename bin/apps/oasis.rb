@@ -490,13 +490,13 @@ puts "Right above the cube: You are deeply affected by stress and have a hard ti
 prompt.keypress("Press space to continue", keys: [:space, :return])
 puts "========================================================================"
 end
-def go_back_to_menu(user)
+
+def go_back_to_menu
   command = Command.new
   command.run
 end
 
 def run(user)
-  welcome_oasis
   question_one(user)
   question_two(user)
   question_three(user)
@@ -507,6 +507,6 @@ def run(user)
   question_eight(user)
   question_nine(user)
   get_user_results(user)
- 
+  go_back_to_menu
 end
 end

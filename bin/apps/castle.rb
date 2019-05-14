@@ -192,7 +192,7 @@ class Castle
     end
   end
 
-  def get_results(user)
+  def get_user_results(user)
     prompt = TTY::Prompt.new
     system "clear"
     results = @all
@@ -285,9 +285,13 @@ class Castle
     end
     puts "Thanks for playing"
   end
+  def go_back_to_menu
+    command = Command.new
+    command.run
+  end
+  
 
   def run(user)
-    welcome
     question_one(user)
     question_two(user)
     question_three(user)
@@ -295,6 +299,6 @@ class Castle
     question_five(user)
     question_six(user)
     get_results(user)
-    command.run
+    go_back_to_menu
   end
 end
