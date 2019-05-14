@@ -63,7 +63,7 @@ class Command
 
   def love(user)
     love = Love.new
-    love.welcome(user)
+    love.welcome
     love.run(user)
   end
 

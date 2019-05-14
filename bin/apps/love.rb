@@ -79,7 +79,7 @@ class Love
       Response.find_or_create_by(user: user, question: question, answers: answer)
       @all << answer
     end
-    binding.pry
+
   end
 
   def question_four(user)
@@ -102,7 +102,7 @@ class Love
       Response.find_or_create_by(user: user, question: question, answers: answer)
       @all << answer
     end
-    binding.pry
+
   end
 
   def question_five(user)
@@ -124,7 +124,7 @@ class Love
       Response.find_or_create_by(user: user, question: question, answers: answer)
       @all << answer
     end
-    binding.pry
+
   end
 
   def question_six(user)
@@ -146,7 +146,7 @@ class Love
       Response.find_or_create_by(user: user, question: question, answers: answer)
       @all << answer
     end
-    binding.pry
+
   end
 
   def get_user_results(user)
